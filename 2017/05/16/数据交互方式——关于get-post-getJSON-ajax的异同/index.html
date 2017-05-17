@@ -1,0 +1,184 @@
+<!-- 共用的布局文件 -->
+
+<!DOCTYPE html>
+<html>
+  <!-- THE HEAD OF HTML FILES -->
+
+<head>
+  <meta http-equiv="content-type" content="text/html; charset=utf-8">
+  <meta http-equiv="X-UA-COMPATIBLE" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0">
+  <meta name="description" content="about personal">
+  <meta name="keyword" content="hexo ejs blog personalPage">
+
+  <link rel="shortcut icon" href="/images/favicon.png">
+
+  <title>YuXLan</title>
+
+  <!-- NORMALIZE CSS -->
+  <link rel="stylesheet" href="/css/normalize.css">
+
+  <!-- BOOTSTRAP CSS -->
+  <link rel="stylesheet" href="/css/bootstrap.min.css">
+
+  <!-- FONTAWESOME -->
+  <link rel="stylesheet" href="/css/font-awesome/css/font-awesome.css">
+
+  <!-- PLUGIN -->
+  <link rel="stylesheet" href="/css/magnific-popup.css">
+  <link rel="stylesheet" href="/css/slider-pro.css">
+  <link rel="stylesheet" href="/css/owl.carousel.css">
+  <link rel="stylesheet" href="/css/owl.theme.css">
+  <link rel="stylesheet" href="/css/owl.transitions.css">
+  <link rel="stylesheet" href="/css/animate.css">
+
+  <!-- MAINSTYLE -->
+  <link rel="stylesheet" href="/css/style.css">
+
+  <!-- BASIC JS -->
+  <script src="/js/bootstrap.min.js"></script>
+  <script src="/js/jquery.min.js"></script>
+  <script src="/js/modernizr.min.js"></script>
+  <script src="/js/jquery.easing.js"></script>
+  <script src="/js/jquery.scrollUp.min.js"></script>
+  <script src="/js/smooth-scroll.min.js"></script>
+  <script src="/js/jquery.magnific-popup.min.js"></script>
+  <script src="/js/jquery.sliderPro.min.js"></script>
+  <script src="/js/owl.carousel.min.js"></script>
+  <script src="/js/jquery.easypiechart.js"></script>
+  <script src="/js/jquery.countTo.js"></script>
+  <script src="/js/isotope.pkgd.min.js"></script>
+  <script src="/js/jquery.stellar.min.js"></script>
+  <script src="/js/jquery.waypoints.min.js"></script>
+  <script src="/js/wow.min.js"></script>
+  <script src="/js/jquery.nav.js"></script>
+  <script src="/js/custom.js"></script>
+
+</head>
+  <body>
+      <!-- THE HEADER + NAV -->
+
+
+<header>
+    <!-- Nav Menu start-->
+    <nav class="navbar clean-main-menu" role="navigation">
+        <div class="container">
+
+            <!-- Nav Toggle -->
+            <div class="navbar-header">
+                <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                </button>
+
+                <!-- Logo -->
+                <a class="navbar-brand logo" href="index.html" id="logo">
+                    YuXLan
+                </a>
+
+            </div>
+            <!-- Nav Toggle End -->
+
+            <!-- Nav-collapse start-->
+            <div id="nav-menu" class="navbar-collapse collapse" role="navigation">
+                <ul class="nav navbar-nav clean-menu-wrapper">
+                    
+                    <li class="active">
+                        <a href="/" class="menu-item-link">首页</a>
+                    </li>
+                    
+                    <li class="active">
+                        <a href="/archives" class="menu-item-link">分类汇总</a>
+                    </li>
+                    
+                    <li class="active">
+                        <a href="/" class="menu-item-link">关于</a>
+                    </li>
+                    
+                    <li class="active">
+                        <a href="/" class="menu-item-link">作品集</a>
+                    </li>
+                    
+                </ul>
+            </div>
+            <!-- Nav-collapse End-->
+
+        </div>
+    </nav>
+    <!-- Nav Menu End-->
+</header>
+      <!-- 文章详情页对应的布局文件 -->
+
+<article class="post">
+  <div class="post-title">
+    <h2 class="title">数据交互方式——关于get/post/getJSON/ajax的异同</h2>
+  </div>
+   <div class="post-meta">
+    <span class="post-time">2017-05-16</span>
+  </div>
+  <div class="post-content">
+    <h2 id="get"><a href="#get" class="headerlink" title="$.get"></a>$.get</h2><hr>
+<p>.get是以GET方式实现AJAX请求，在提交短数据时可用。基本不常用，因为$.getJSON完全满足功能需要，正如上所说，结构合理、更加安全。即便是为了提交长数据，也不会选用.get,而是.post。但还是要了解其 用法：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line">$.get(</div><div class="line">     url,</div><div class="line">     [data],</div><div class="line">     [ callback]</div><div class="line"> ;)</div></pre></td></tr></table></figure>
+<p><strong>url</strong>：string类型，ajax请求的地址。<br><strong>data</strong>：可选参数，object类型，发送至服务器的key/value数据会作为QueryString附加到请求URL中。<br><strong>callback</strong>：可选参数，function类型，当ajax返回成功时自动调用该函数。</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div></pre></td><td class="code"><pre><div class="line"> //项目案例</div><div class="line"> $.get(</div><div class="line">         &quot;/legalconsult/answer/focus&quot;,</div><div class="line">         &#123;id:id&#125;,</div><div class="line">         function(data)&#123;</div><div class="line">             if(data.error==0)&#123;</div><div class="line">                  var su=$(&quot;#focus_&quot;+id).text();</div><div class="line">                  su=parseInt(su);　　　　　　　　　　　　　　</div><div class="line">                  su++;</div><div class="line">                 $(&quot;#focus_&quot;+id).text(su);　　　　　　//后台操作功后返回error==0，在这里进行前端操作</div><div class="line">                 var i=$(&quot;#show_&quot;+id);</div><div class="line">                 var j=$(&quot;&lt;span&gt;&lt;p class=&apos;icon-ok&apos;&gt;&lt;/p&gt;已赞同&lt;/span&gt;&quot;);</div><div class="line">                 i.empty().append(j);</div><div class="line">                 return true;</div><div class="line">            &#125;else&#123;</div><div class="line">                showError(data.error);　//调用其它函数，可忽视</div><div class="line">                return false;</div><div class="line">            &#125;</div><div class="line">        &#125;</div><div class="line">);</div></pre></td></tr></table></figure>
+<hr>
+<h2 id="post"><a href="#post" class="headerlink" title="$.post"></a>$.post</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div></pre></td><td class="code"><pre><div class="line">$.post(</div><div class="line">    url,</div><div class="line">    [data],</div><div class="line">    [callback],</div><div class="line">    [type]</div><div class="line">);</div></pre></td></tr></table></figure>
+<p><strong>url</strong>：string类型，ajax请求的地址。<br><strong>data</strong>：可选参数，object类型，发送至服务器的key/value数据会作为QueryString附加到请求URL中。<br><strong>callback</strong>：可选参数，function类型，当ajax返回成功时自动调用该函数。<br><strong>type</strong>：type为请求的数据类型，可以是html,xml,json等类型，如果我们设置这个参数为：json，那么返回的格式则是json格式的，如果没有设置，就和.get()返回的格式一样，都是字符串的。<br>这个方法和.get()用法差不多，唯独多了一个type参数，这里就只介绍type参数，其他的参考上面.get()的。</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div></pre></td><td class="code"><pre><div class="line"> //实际项目案例</div><div class="line"> function changeMarkShow(id)&#123;</div><div class="line">      $.post(</div><div class="line">              &quot;/legalconsult/admin/markquestion&quot;,&#123;id:id&#125;,</div><div class="line">              function(data)&#123;</div><div class="line">                  if(data.error==0)&#123;</div><div class="line">                      showSuccessMessage(&quot;操作成功,正在刷新。。。。&quot;);</div><div class="line">                      setTimeout(&quot;window.location.reload()&quot;,2200);</div><div class="line">                      var i=$(&quot;td.markshow&quot;+id+&quot; a i&quot; );</div><div class="line">                     if(i.hasClass(&quot;splashy-star_full&quot;))&#123;</div><div class="line">                         i.removeClass(&quot;splashy-star_full&quot;).addClass(&quot;splashy-gem_empty&quot;);</div><div class="line">                     &#125;else&#123;</div><div class="line">                         i.removeClass(&quot;splashy-gem_empty&quot;).addClass(&quot;splashy-gem_full&quot;);</div><div class="line">                     &#125;</div><div class="line">                     return true;</div><div class="line">                     &#125;else&#123;</div><div class="line">                         showErrorMessage(data.error);</div><div class="line">                         return false;</div><div class="line">                     &#125;</div><div class="line">                &#125;,</div><div class="line">            &quot;json&quot;                                //声明数据格式</div><div class="line">             );</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<hr>
+<h2 id="getJSON"><a href="#getJSON" class="headerlink" title="$.getJSON"></a>$.getJSON</h2><p>.getJSON()是专门为ajax获取json数据而设置的，并且支持跨域调用，其语法的格式为：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line">$.getJSON(</div><div class="line">      url,                 //请求URL</div><div class="line">      [data],           //传参，可选参数</div><div class="line">      [callback]       //回调函数，可选参数</div><div class="line">  　);</div></pre></td></tr></table></figure>
+<p>　　<strong>url</strong>：string类型， 发送请求地址<br>　　<strong>data</strong> ：可选参数， 待发送 Key/value 参数 ，同get，post类型的data<br>　　<strong>callback</strong> ：可选参数，载入成功时回调函数，同get，post类型的callback<br>　　JSON是一种理想的数据传输格式，它能够很好的融合与JavaScript或其他宿主语言，并且可以被JS直接使用。使用JSON相比传统的通过 GET、POST直接发送“裸体”数据，在结构上更为合理，也更为安全。至于jQuery的getJSON()函数，只是设置了JSON参数的 ajax()函数的一个简化版本。这个函数也是可以跨域使用的，相比get()、post()有一定优势。另外这个函数可以通过把请求url写 成”myurl?callback=X”这种格式，让程序执行回调函数X。
+　　</p>
+<blockquote>
+<p>特别注意：</p>
+</blockquote>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div></pre></td><td class="code"><pre><div class="line">//——项目中的实际案例</div><div class="line"> function changeAnswerShow(id)&#123;</div><div class="line">     $.getJSON(</div><div class="line">             &quot;/legalconsult/admin/changeshowanswer&quot;,&#123;id:id&#125;,　　　　//URL和参数</div><div class="line">             function(data)&#123;</div><div class="line">              if(data.error==0)&#123;　　　　　　//回调函数，与后台交互</div><div class="line">                 showSuccessMessage(&quot;操作成功,正在刷新。。。。&quot;);</div><div class="line">                 setTimeout(&quot;window.location.reload()&quot;,2200);</div><div class="line">                 var i=$(&quot;td.show&quot;+id+&quot; a i&quot; );</div><div class="line">                if(i.hasClass(&quot;splashy-gem_okay&quot;))&#123;</div><div class="line">                    i.removeClass(&quot;splashy-gem_okay&quot;).addClass(&quot;splashy-gem_remove&quot;);</div><div class="line">                &#125;else&#123;</div><div class="line">                   i.removeClass(&quot;splashy-gem_remove&quot;).addClass(&quot;splashy-gem_okay&quot;);</div><div class="line">                &#125;</div><div class="line">                return true;</div><div class="line">             &#125;else&#123;</div><div class="line">                showErrorMessage(data.error);</div><div class="line">                return false;</div><div class="line">             &#125;</div><div class="line">           &#125;</div><div class="line">       );</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<hr>
+<h2 id="ajax"><a href="#ajax" class="headerlink" title="$.ajax"></a>$.ajax</h2><p>.ajax是一种常用的普通封装异步方式。</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">$.ajax(options)；</div></pre></td></tr></table></figure>
+<p>options是一个object类型，它指明了本次ajax调用的具体参数：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div></pre></td><td class="code"><pre><div class="line">//示例</div><div class="line"> .ajax(</div><div class="line">             url: &quot;/legalconsult/layer/update-info&quot;,</div><div class="line">             datatype:&quot;json&quot;,</div><div class="line">             type:&apos;post&apos;,</div><div class="line">             beforeSend:function()&#123;</div><div class="line">                             //函数体，数据发送前执行。</div><div class="line">                      &#125;</div><div class="line">                       success：function()&#123;</div><div class="line">                            //函数体，数据发送成功回调</div><div class="line">                      　　　　&#125;</div><div class="line">                      error: function()&#123;</div><div class="line">                            //函数体，数据发送错误时执行</div><div class="line">                      　　    &#125;</div><div class="line">         );</div></pre></td></tr></table></figure>
+
+  </div>
+</article>
+      <!-- FOOTER SECTION -->
+
+<footer class="background-two">
+    <div class="container">
+        <div class="row">
+            <div class="clean-footer-content">
+
+                <div class="clean-footer-logo wow bounceIn" data-wow-offset="0">
+                    <a href="index.html" id="logo-footer">
+                        YuXLan
+                    </a>
+                </div>
+
+                <p class="clean-copyright-info">
+                    Copyright &copy; <a href="http://www.miitbeian.gov.cn/" target="_blank">浙ICP备17018917号</a> - writted by YuXLan
+                </p>
+
+                <ul class="clean-footer-social-info">
+                    <li>
+                        <a href=""><i class="fa fa-github"></i></a>
+                    </li>
+                    <li>
+                        <a href=""><i class="fa fa-codepen"></i></a>
+                    </li>
+                    <li>
+                        <a href=""><i class="fa fa-linkedin"></i></a>
+                    </li>
+                    <li>
+                        <a href=""><i class="fa fa-weibo"></i></a>
+                    </li>
+                </ul>
+
+            </div>
+        </div>
+    </div>
+</footer>
+  </body>
+</html>

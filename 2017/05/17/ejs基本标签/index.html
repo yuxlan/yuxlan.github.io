@@ -1,0 +1,180 @@
+<!-- 共用的布局文件 -->
+
+<!DOCTYPE html>
+<html>
+  <!-- THE HEAD OF HTML FILES -->
+
+<head>
+  <meta http-equiv="content-type" content="text/html; charset=utf-8">
+  <meta http-equiv="X-UA-COMPATIBLE" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0">
+  <meta name="description" content="about personal">
+  <meta name="keyword" content="hexo ejs blog personalPage">
+
+  <link rel="shortcut icon" href="/images/favicon.png">
+
+  <title>YuXLan</title>
+
+  <!-- NORMALIZE CSS -->
+  <link rel="stylesheet" href="/css/normalize.css">
+
+  <!-- BOOTSTRAP CSS -->
+  <link rel="stylesheet" href="/css/bootstrap.min.css">
+
+  <!-- FONTAWESOME -->
+  <link rel="stylesheet" href="/css/font-awesome/css/font-awesome.css">
+
+  <!-- PLUGIN -->
+  <link rel="stylesheet" href="/css/magnific-popup.css">
+  <link rel="stylesheet" href="/css/slider-pro.css">
+  <link rel="stylesheet" href="/css/owl.carousel.css">
+  <link rel="stylesheet" href="/css/owl.theme.css">
+  <link rel="stylesheet" href="/css/owl.transitions.css">
+  <link rel="stylesheet" href="/css/animate.css">
+
+  <!-- MAINSTYLE -->
+  <link rel="stylesheet" href="/css/style.css">
+
+  <!-- BASIC JS -->
+  <script src="/js/bootstrap.min.js"></script>
+  <script src="/js/jquery.min.js"></script>
+  <script src="/js/modernizr.min.js"></script>
+  <script src="/js/jquery.easing.js"></script>
+  <script src="/js/jquery.scrollUp.min.js"></script>
+  <script src="/js/smooth-scroll.min.js"></script>
+  <script src="/js/jquery.magnific-popup.min.js"></script>
+  <script src="/js/jquery.sliderPro.min.js"></script>
+  <script src="/js/owl.carousel.min.js"></script>
+  <script src="/js/jquery.easypiechart.js"></script>
+  <script src="/js/jquery.countTo.js"></script>
+  <script src="/js/isotope.pkgd.min.js"></script>
+  <script src="/js/jquery.stellar.min.js"></script>
+  <script src="/js/jquery.waypoints.min.js"></script>
+  <script src="/js/wow.min.js"></script>
+  <script src="/js/jquery.nav.js"></script>
+  <script src="/js/custom.js"></script>
+
+</head>
+  <body>
+      <!-- THE HEADER + NAV -->
+
+
+<header>
+    <!-- Nav Menu start-->
+    <nav class="navbar clean-main-menu" role="navigation">
+        <div class="container">
+
+            <!-- Nav Toggle -->
+            <div class="navbar-header">
+                <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                </button>
+
+                <!-- Logo -->
+                <a class="navbar-brand logo" href="index.html" id="logo">
+                    YuXLan
+                </a>
+
+            </div>
+            <!-- Nav Toggle End -->
+
+            <!-- Nav-collapse start-->
+            <div id="nav-menu" class="navbar-collapse collapse" role="navigation">
+                <ul class="nav navbar-nav clean-menu-wrapper">
+                    
+                    <li class="active">
+                        <a href="/" class="menu-item-link">首页</a>
+                    </li>
+                    
+                    <li class="active">
+                        <a href="/archives" class="menu-item-link">分类汇总</a>
+                    </li>
+                    
+                    <li class="active">
+                        <a href="/" class="menu-item-link">关于</a>
+                    </li>
+                    
+                    <li class="active">
+                        <a href="/" class="menu-item-link">作品集</a>
+                    </li>
+                    
+                </ul>
+            </div>
+            <!-- Nav-collapse End-->
+
+        </div>
+    </nav>
+    <!-- Nav Menu End-->
+</header>
+      <!-- 文章详情页对应的布局文件 -->
+
+<article class="post">
+  <div class="post-title">
+    <h2 class="title">ejs基本标签</h2>
+  </div>
+   <div class="post-meta">
+    <span class="post-time">2017-05-17</span>
+  </div>
+  <div class="post-content">
+    <hr>
+<ul>
+<li><p>&lt;% code %&gt;用于执行其中的JavaScript代码</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">&lt;% alert(&quot;hello world!&quot;) %&gt;</div></pre></td></tr></table></figure>
+</li>
+<li><p>&lt;%= code %&gt;对code进行HTML转义</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">&lt;h1&gt;&lt;%= title %&gt;&lt;/h1&gt;                 &lt;!-- 会显示title里存的值 --&gt;</div><div class="line">&lt;p&gt;&lt;%= &apos;hello world&apos; %&gt;&lt;/p&gt;           &lt;!-- 显示hello world --&gt;</div><div class="line">&lt;h1&gt;&lt;%= &apos;&lt;b&gt;hello world&lt;/b&gt;&apos; %&gt;&lt;/h1&gt;  &lt;!-- 加粗显示hello world --&gt;</div></pre></td></tr></table></figure>
+</li>
+</ul>
+<ul>
+<li><p>&lt;%- code %&gt;不会进行转义，不会执行该代码</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">&lt;h1&gt;&lt;%- title %&gt; asd &lt;/h1&gt;               &lt;!-- 只显示asd --&gt;</div><div class="line">&lt;p&gt;&lt;%# &apos;hello world&apos; %&gt; asd &lt;/p&gt;         &lt;!-- 只显示asd --&gt;</div></pre></td></tr></table></figure>
+</li>
+<li><p>&lt;%- include filename %&gt;加载其它页面模板</p>
+</li>
+<li><p>引入外部js和css文件</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">&lt;%- css(&apos;filename.css&apos;) %&gt;</div><div class="line">&lt;%- js(&apos;filename.js&apos;) %&gt;</div></pre></td></tr></table></figure>
+</li>
+</ul>
+
+  </div>
+</article>
+      <!-- FOOTER SECTION -->
+
+<footer class="background-two">
+    <div class="container">
+        <div class="row">
+            <div class="clean-footer-content">
+
+                <div class="clean-footer-logo wow bounceIn" data-wow-offset="0">
+                    <a href="index.html" id="logo-footer">
+                        YuXLan
+                    </a>
+                </div>
+
+                <p class="clean-copyright-info">
+                    Copyright &copy; <a href="http://www.miitbeian.gov.cn/" target="_blank">浙ICP备17018917号</a> - writted by YuXLan
+                </p>
+
+                <ul class="clean-footer-social-info">
+                    <li>
+                        <a href=""><i class="fa fa-github"></i></a>
+                    </li>
+                    <li>
+                        <a href=""><i class="fa fa-codepen"></i></a>
+                    </li>
+                    <li>
+                        <a href=""><i class="fa fa-linkedin"></i></a>
+                    </li>
+                    <li>
+                        <a href=""><i class="fa fa-weibo"></i></a>
+                    </li>
+                </ul>
+
+            </div>
+        </div>
+    </div>
+</footer>
+  </body>
+</html>
