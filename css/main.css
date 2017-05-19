@@ -112,7 +112,7 @@ h1{
 }
 
 h2{
-  font-size: 30px;
+  font-size: 25px;
 }
 
 h3{
@@ -461,10 +461,10 @@ section {
   color: #000;
 }
 
-.clean-section-header h2 span{
+.clean-section-header h2 a{
   font-family: 'Montserrat', sans-serif;
   font-weight: 700;
-  font-size: 30px;
+  font-size: 25px;
 }
 
 .clean-section-header-1 p{

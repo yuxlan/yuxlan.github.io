@@ -1,0 +1,231 @@
+<!-- 共用的布局文件 -->
+
+<!DOCTYPE html>
+<html>
+  <!-- THE HEAD OF HTML FILES -->
+
+<head>
+  <meta http-equiv="content-type" content="text/html; charset=utf-8">
+  <meta http-equiv="X-UA-COMPATIBLE" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0">
+  <meta name="description" content="about personal">
+  <meta name="keyword" content="hexo ejs blog personalPage">
+
+  <link rel="shortcut icon" href="/images/favicon.png">
+
+  <title>YuXLan</title>
+
+  <!-- NORMALIZE CSS -->
+  <link rel="stylesheet" href="/css/normalize.css">
+
+  <!-- BOOTSTRAP CSS -->
+  <link rel="stylesheet" href="/css/bootstrap.min.css">
+
+  <!-- FONTAWESOME -->
+  <link rel="stylesheet" href="/css/font-awesome/css/font-awesome.css">
+
+  <!-- PLUGIN -->
+  <link rel="stylesheet" href="/css/magnific-popup.css">
+  <link rel="stylesheet" href="/css/slider-pro.css">
+  <link rel="stylesheet" href="/css/owl.carousel.css">
+  <link rel="stylesheet" href="/css/owl.theme.css">
+  <link rel="stylesheet" href="/css/owl.transitions.css">
+  <link rel="stylesheet" href="/css/animate.css">
+
+  <!-- MAINSTYLE -->
+  <link rel="stylesheet" href="/css/main.css">
+  <link rel="stylesheet" href="/css/style.css">
+
+  <!-- BASIC JS -->
+  <script src="/js/bootstrap.min.js"></script>
+  <script src="/js/jquery.min.js"></script>
+  <script src="/js/modernizr.min.js"></script>
+  <script src="/js/jquery.easing.js"></script>
+  <script src="/js/jquery.scrollUp.min.js"></script>
+  <script src="/js/smooth-scroll.min.js"></script>
+  <script src="/js/jquery.magnific-popup.min.js"></script>
+  <script src="/js/jquery.sliderPro.min.js"></script>
+  <script src="/js/owl.carousel.min.js"></script>
+  <script src="/js/jquery.easypiechart.js"></script>
+  <script src="/js/jquery.countTo.js"></script>
+  <script src="/js/isotope.pkgd.min.js"></script>
+  <script src="/js/jquery.stellar.min.js"></script>
+  <script src="/js/jquery.waypoints.min.js"></script>
+  <script src="/js/wow.min.js"></script>
+  <script src="/js/jquery.nav.js"></script>
+  <script src="/js/custom.js"></script>
+
+  <link rel="stylesheet"
+        href="//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.4.0/styles/zenburn.min.css">
+
+</head>
+  <body>
+      <!-- THE HEADER + NAV -->
+
+
+<header>
+    <!-- Nav Menu start-->
+    <nav class="navbar clean-main-menu" role="navigation">
+        <div class="container">
+
+            <!-- Nav Toggle -->
+            <div class="navbar-header">
+                <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                </button>
+
+                <!-- Logo -->
+                <a class="navbar-brand logo" href="index.html" id="logo">
+                    YuXLan
+                </a>
+
+            </div>
+            <!-- Nav Toggle End -->
+
+            <!-- Nav-collapse start-->
+            <div id="nav-menu" class="navbar-collapse collapse" role="navigation">
+                <ul class="nav navbar-nav clean-menu-wrapper">
+                    
+                    <li>
+                        <a href="/" class="menu-item-link">
+                            首页
+                        </a>
+                    </li>
+                    
+                    <li>
+                        <a href="/about" class="menu-item-link">
+                            关于
+                        </a>
+                    </li>
+                    
+                    <li>
+                        <a href="/" class="menu-item-link">
+                            作品集
+                        </a>
+                    </li>
+                    
+                </ul>
+            </div>
+            <!-- Nav-collapse End-->
+
+        </div>
+    </nav>
+    <!-- Nav Menu End-->
+</header>
+      <!-- 文章详情页对应的布局文件 -->
+
+
+<section id="offer" class="clean-section-wrapper clean-offer-section">
+    <div class="container">
+        <div class="row">
+
+            <!-- Blogs -->
+            <div class="col-md-12 col-sm-12 col-xs-12 clean-section-header-1 wow fadeInDown">
+                <h1>
+                    <span class="clean-color-contras">
+                        对象、构造函数、原型和原型链
+                    </span>
+                </h1>
+                <div class="clean-line"></div>
+                <div class="post-meta text-center">
+                    <span class="post-time">2017-05-20</span>
+                </div>
+                <p class="col-md-8 col-sm-10 col-xs-12 col-md-offset-2 col-sm-offset-1">
+                    <hr>
+<ul>
+<li><strong>工厂模式</strong><br>在需要创建多个对象时，写一个模子，以此复制对象，减少重复创建对象的过程。<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div></pre></td><td class="code"><pre><div class="line">var createPerson = function(name,age)&#123;</div><div class="line">    // 声明一个中间对象，即工厂模式的模子</div><div class="line">    var o = new Object();</div><div class="line">    // 依次添加属性和方法</div><div class="line">    o.name = name;</div><div class="line">    o.age = age;</div><div class="line">    o.getName = function()&#123;</div><div class="line">        return this.name;</div><div class="line">    &#125;</div><div class="line">    return o;</div><div class="line">&#125;</div><div class="line"></div><div class="line">// 创建实例</div><div class="line">var perJack = createPerson(&quot;Jack&quot;,21);</div><div class="line">var perTom = createPerson(&quot;Tom&quot;,24);</div></pre></td></tr></table></figure>
+</li>
+</ul>
+<p>麻烦：</p>
+<ol>
+<li>没法识别对象实例的类型</li>
+<li>不停地为getName方法分配空间</li>
+</ol>
+<hr>
+<ul>
+<li><strong>new</strong><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line"> function demo()&#123;</div><div class="line">        console.log(this);</div><div class="line">&#125;</div><div class="line">demo(); // window</div><div class="line">new demo(); // demo</div></pre></td></tr></table></figure>
+</li>
+</ul>
+<p>关于new做了什么：</p>
+<ol>
+<li>声明一个中间对象；</li>
+<li>将该中间对象的原型指向构造函数的原型；</li>
+<li>将构造对象的this指向该中间对象；</li>
+<li>返回该中间对象，即返回实例对象；<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div><div class="line">36</div></pre></td><td class="code"><pre><div class="line">// 创建函数</div><div class="line">var Person = function(name,age)&#123;</div><div class="line">    this.name = name;</div><div class="line">    this.age = age;</div><div class="line">    this.getName = function()&#123;</div><div class="line">        return this.name;</div><div class="line">    &#125;</div><div class="line">&#125;</div><div class="line"></div><div class="line">// 将构造函数以参数形式传入</div><div class="line">function New(func)&#123;</div><div class="line">    // 声明一个中间对象，该对象为最终返回的实例</div><div class="line">    var res = &#123;&#125;;</div><div class="line">    if(func.prototype !== null)&#123;</div><div class="line">        // 将实例的原型指向构造函数的原型</div><div class="line">        res._proto_ = func.prototype;</div><div class="line">    &#125;</div><div class="line">    </div><div class="line">    // ret为构造函数执行的结果，通过apply，将构造函数内部的this指向修改为指向res，即为实例对象</div><div class="line">    var ret = func.apply(res,Array.prototype.slice.call(arguments,1));</div><div class="line">    </div><div class="line">    // 在构造函数中明确指定了返回对象时，new的执行结果就是返回该对象</div><div class="line">    if((typeof ret === &quot;object&quot; || typeof ret === &quot;function&quot;) &amp;&amp; ret !== null)&#123;</div><div class="line">        return ret;</div><div class="line">    &#125;</div><div class="line">    </div><div class="line">    // 如果没有明确指定返回对象，则默认返回res,res就是实例对象</div><div class="line">    return res;</div><div class="line">&#125;</div><div class="line"></div><div class="line">// 通过new声明创建实例，p1实际接收的是new中返回的res</div><div class="line">var p1 = New(Person,&quot;Tom&quot;,20);</div><div class="line">console.log(p1.getName());</div><div class="line"></div><div class="line">// 也可以判断出实例的类型</div><div class="line">console.log(p1 instanceof Person);// true（instanceof识别实例类型）</div></pre></td></tr></table></figure>
+</li>
+</ol>
+<hr>
+<ul>
+<li><strong>构造函数</strong><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div></pre></td><td class="code"><pre><div class="line">var Person = function(name,age)&#123;</div><div class="line">    this.name = name;</div><div class="line">    this.age = age;</div><div class="line">    this.getName = function()&#123;</div><div class="line">        return this.name;</div><div class="line">    &#125;</div><div class="line">&#125;</div><div class="line"></div><div class="line">var p1 = new Person(&quot;Tom&quot;,20);</div><div class="line">console.log(p1.getName()); // tom</div><div class="line"></div><div class="line">console.log(p1 instanceof Person);</div></pre></td></tr></table></figure>
+</li>
+</ul>
+<hr>
+<ul>
+<li><strong>原型</strong><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div></pre></td><td class="code"><pre><div class="line">// 声明构造函数</div><div class="line">function Person(name,age)&#123;</div><div class="line">    this.name = name;</div><div class="line">    this.age = age;</div><div class="line">&#125;</div><div class="line"></div><div class="line">// 通过prototype属性，将方法挂载到原型对象上</div><div class="line">Person.prototype.getName = function()&#123;</div><div class="line">    return this.name;</div><div class="line">&#125;</div><div class="line"></div><div class="line">var p1 = new Person(&quot;Tom&quot;,10);</div><div class="line">var p2 = new Person(&quot;Tim&quot;,20);</div><div class="line"></div><div class="line">console.log(p1.getName === p2.getName); // true</div></pre></td></tr></table></figure>
+</li>
+</ul>
+<p><img src="https://timgsa.baidu.com/timg?image&amp;quality=80&amp;size=b10000_10000&amp;sec=1495208437&amp;di=c97910141f8dc88d1b686bf99d6ae6e6&amp;src=http://img.mp.itc.cn/upload/20170502/09c70412ef604d508d0eeda801cca030_th.png" alt="此处输入图片的描述"></p>
+<p><br><br>当我们访问实例对象中的属性和方法时，会优先访问实例对象本身的属性和方法。<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div></pre></td><td class="code"><pre><div class="line">function Person(name,age)&#123;</div><div class="line">    this.name = name;</div><div class="line">    this.age = age;</div><div class="line">    this.getName = function()&#123;</div><div class="line">        console.log(&quot;this is&quot;);</div><div class="line">    &#125;</div><div class="line">&#125;</div><div class="line"></div><div class="line">Person.prototype.getName = function()&#123;</div><div class="line">    return this.name;</div><div class="line">&#125;</div><div class="line"></div><div class="line">var p1 = new Person(&quot;Tom&quot;,20);</div><div class="line">p1.getName(); // this is</div></pre></td></tr></table></figure></p>
+<p><br><br>通过<strong>in</strong>来判断，一个对象是否拥有某个属性/方法，无论是该属性/方法存在于实例对象还是原型对象。<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div></pre></td><td class="code"><pre><div class="line">function Person(name,age)&#123;</div><div class="line">    this.name = name;</div><div class="line">    this.age = age;</div><div class="line">&#125;</div><div class="line"></div><div class="line">Person.prototype.getName = function()&#123;</div><div class="line">    return this.name;</div><div class="line">&#125;</div><div class="line"></div><div class="line">var p1 = new Person(&quot;Tom&quot;,20);</div><div class="line">console.log(&quot;name&quot; in p1); // true</div></pre></td></tr></table></figure></p>
+<p>最常用在判断当前页面是否在手机端打开。<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">isMobile = &quot;ontouchstart&quot; in document;</div></pre></td></tr></table></figure></p>
+<hr>
+<ul>
+<li><p><strong>原型链</strong></p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">function foo()&#123;&#125;</div></pre></td></tr></table></figure>
+<p>该函数的原型链如下：<br><img src="https://timgsa.baidu.com/timg?image&amp;quality=80&amp;size=b10000_10000&amp;sec=1495209980&amp;di=9a11f063ffbe24079a0371cd3f3ff2ce&amp;src=http://img.mp.itc.cn/upload/20170514/39556212c3c74944a58e150a6031dea9_th.jpg" alt="此处输入图片的描述"></p>
+</li>
+</ul>
+<hr>
+<ul>
+<li><strong>继承</strong><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div></pre></td><td class="code"><pre><div class="line">function Person(name,age)&#123;</div><div class="line">    this.name = name;</div><div class="line">    this.age = age;</div><div class="line">&#125;</div><div class="line"></div><div class="line">Person.prototype.getName = function()&#123;</div><div class="line">    return this.name;</div><div class="line">&#125;</div><div class="line"></div><div class="line">// 构造函数的继承</div><div class="line">function cPerson(name,age,job)&#123;</div><div class="line">    Person.call(this,name,age);</div><div class="line">    this.job = job;</div><div class="line">&#125;</div><div class="line"></div><div class="line">// 继承原型</div><div class="line">cPerson.prototype = new Person(name,age);</div><div class="line"></div><div class="line">// 添加更多的方法</div><div class="line">cPerson.prototyoe.getLive = function()&#123;&#125;</div></pre></td></tr></table></figure>
+</li>
+</ul>
+<p><img src="https://timgsa.baidu.com/timg?image&amp;quality=80&amp;size=b10000_10000&amp;sec=1495210632&amp;di=646e0e5058bd44f74afdf60e567113e0&amp;src=http://img.mp.itc.cn/upload/20170514/39556212c3c74944a58e150a6031dea9_th.jpg" alt="此处输入图片的描述"></p>
+
+                </p>
+            </div>
+            <!-- Blogs End -->
+
+        </div>
+    </div>
+</section>
+      <!-- FOOTER SECTION -->
+
+<footer class="background-one">
+    <div class="container">
+        <div class="row">
+            <div class="clean-footer-content">
+
+                <div class="clean-footer-logo wow bounceIn" data-wow-offset="0">
+                    <a href="index.html" id="logo-footer">
+                        YuXLan
+                    </a>
+                </div>
+
+                <p class="clean-copyright-info">
+                    Copyright &copy; <a href="http://www.miitbeian.gov.cn/" target="_blank">浙ICP备17018917号</a> - writted by YuXLan
+                </p>
+
+                <ul class="clean-footer-social-info">
+                    <li>
+                        <a href="https://github.com/yuxlan" target="_blank"><i class="fa fa-github"></i></a>
+                    </li>
+                    <li>
+                        <a href="https://codepen.io/YuXLan/" target="_blank"><i class="fa fa-codepen"></i></a>
+                    </li>
+                    <li>
+                        <a href="http://www.linkedin.com/in/%E5%B0%8F%E5%85%B0-%E4%BD%99-3467b513b/" target="_blank"><i class="fa fa-linkedin"></i></a>
+                    </li>
+                    <li>
+                        <a href="http://weibo.com/5287171180/profile?topnav=1&wvr=6&is_all=1" target="_blank"><i class="fa fa-weibo"></i></a>
+                    </li>
+                </ul>
+
+            </div>
+        </div>
+    </div>
+</footer>
+  </body>
+</html>
