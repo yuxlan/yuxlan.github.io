@@ -129,7 +129,7 @@
             <div class="col-md-12 col-sm-12 col-xs-12 clean-section-header-1 wow fadeInDown">
                 <h1>
                     <span class="clean-color-contras">
-                        ejs基本标签
+                        内存空间
                     </span>
                 </h1>
                 <div class="clean-line"></div>
@@ -139,23 +139,23 @@
                 <p class="col-md-8 col-sm-10 col-xs-12 col-md-offset-2 col-sm-offset-1">
                     <hr>
 <ul>
-<li><p>&lt;% code %&gt;用于执行其中的JavaScript代码</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">&lt;% alert(&quot;hello world!&quot;) %&gt;</div></pre></td></tr></table></figure>
-</li>
-<li><p>&lt;%= code %&gt;对code进行HTML转义</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">&lt;h1&gt;&lt;%= title %&gt;&lt;/h1&gt;                 &lt;!-- 会显示title里存的值 --&gt;</div><div class="line">&lt;p&gt;&lt;%= &apos;hello world&apos; %&gt;&lt;/p&gt;           &lt;!-- 显示hello world --&gt;</div><div class="line">&lt;h1&gt;&lt;%= &apos;&lt;b&gt;hello world&lt;/b&gt;&apos; %&gt;&lt;/h1&gt;  &lt;!-- 加粗显示hello world --&gt;</div></pre></td></tr></table></figure>
+<li>变量对象和堆内存<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div></pre></td><td class="code"><pre><div class="line">var a1 = 0; // 变量对象</div><div class="line">var a2 = &quot;this is string&quot;; // 变量对象</div><div class="line">var a3 = null; // 变量对象</div><div class="line"></div><div class="line">var b = &#123;m:20&#125;; // 变量b存在于变量对象中，&#123;m:20&#125;作为对象存在于堆内存中</div><div class="line"></div><div class="line">var c = &#123;1,2,3&#125;; // 变量c存在于变量对象中，&#123;1,2,3&#125;作为对象存在于堆内存中</div></pre></td></tr></table></figure>
 </li>
 </ul>
+<p><img src="https://timgsa.baidu.com/timg?image&amp;quality=80&amp;size=b10000_10000&amp;sec=1495974637&amp;di=eceec3c0dc2e1cec687e2a8efb0f24ad&amp;imgtype=jpg&amp;src=http://d.hiphotos.baidu.com/image/pic/item/63d9f2d3572c11df226b1951692762d0f703c20e.jpg" alt="此处输入图片的描述"></p>
+<p>因此，访问堆内存中的引用数据类型时，实际上首先是从变量对象中获取了该对象的地址引用（或者地址指针），然后再从堆内存中取得所需的数据。</p>
+<hr>
 <ul>
-<li><p>&lt;%- code %&gt;不会进行转义，不会执行该代码</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">&lt;h1&gt;&lt;%- title %&gt; asd &lt;/h1&gt;               &lt;!-- 只显示asd --&gt;</div><div class="line">&lt;p&gt;&lt;%# &apos;hello world&apos; %&gt; asd &lt;/p&gt;         &lt;!-- 只显示asd --&gt;</div></pre></td></tr></table></figure>
+<li>JavaScript的内存生命周期<ol>
+<li>分配所需的内存</li>
+<li>使用分配到的内存</li>
+<li>不需要时将其释放<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">var a = 20; // 在内存中给数值变量分配空间 </div><div class="line">alert(a + 100); // 使用内存</div><div class="line">a = null; // 使用完毕之后，释放内存空间</div></pre></td></tr></table></figure>
 </li>
-<li><p>&lt;%- include filename %&gt;加载其它页面模板</p>
-</li>
-<li><p>引入外部js和css文件</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">&lt;%- css(&apos;filename.css&apos;) %&gt;</div><div class="line">&lt;%- js(&apos;filename.js&apos;) %&gt;</div></pre></td></tr></table></figure>
+</ol>
 </li>
 </ul>
+<hr>
+<p>p.s：在局部作用域中，当函数执行完毕，局部变量也就没有存在的必要，因此垃圾收集器很容易做出判断并回收。但是全局变量是什么时候需要自动释放内存空间则很难判断，因此在开发中应该尽量避免使用全局变量，以确保性能问题。</p>
 
                     <br/><br/>
                 </p>
@@ -164,15 +164,10 @@
                 <div class="pager-position">
                     <ul class="pager">
                         
-                        <li class="previous">
-                            <a href="/2017/05/21/内存空间/" data-toggle="tooltip" data-placement="top"
-                               title="内存空间">&larr; 上一篇</a>
-                        </li>
-                        
                         
                         <li class="next">
-                            <a href="/2017/05/21/对象、构造函数、原型和原型链/" data-toggle="tooltip" data-placement="top"
-                               title="对象、构造函数、原型和原型链">下一篇 &rarr;</a>
+                            <a href="/2017/05/21/ejs基本标签/" data-toggle="tooltip" data-placement="top"
+                               title="ejs基本标签">下一篇 &rarr;</a>
                         </li>
                         
                     </ul>
