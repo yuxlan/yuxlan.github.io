@@ -1,0 +1,222 @@
+<!-- 共用的布局文件 -->
+
+<!DOCTYPE html>
+<html>
+  <!-- THE HEAD OF HTML FILES -->
+
+<head>
+  <meta http-equiv="content-type" content="text/html; charset=utf-8">
+  <meta http-equiv="X-UA-COMPATIBLE" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0">
+  <meta name="description" content="about personal">
+  <meta name="keyword" content="hexo ejs blog personalPage">
+
+  <link rel="shortcut icon" href="/images/favicon.png">
+
+  <title>YuXLan</title>
+
+  <!-- NORMALIZE CSS -->
+  <link rel="stylesheet" href="/css/normalize.css">
+
+  <!-- BOOTSTRAP CSS -->
+  <link rel="stylesheet" href="/css/bootstrap.min.css">
+
+  <!-- FONTAWESOME -->
+  <link rel="stylesheet" href="/css/font-awesome/css/font-awesome.css">
+
+  <!-- PLUGIN -->
+  <link rel="stylesheet" href="/css/magnific-popup.css">
+  <link rel="stylesheet" href="/css/slider-pro.css">
+  <link rel="stylesheet" href="/css/owl.carousel.css">
+  <link rel="stylesheet" href="/css/owl.theme.css">
+  <link rel="stylesheet" href="/css/owl.transitions.css">
+  <link rel="stylesheet" href="/css/animate.css">
+
+  <!-- MAINSTYLE -->
+  <link rel="stylesheet" href="/css/main.css">
+  <link rel="stylesheet" href="/css/style.css">
+
+  <!-- BASIC JS -->
+    <script src="/js/jquery.min.js"></script>
+    <script src="/js/bootstrap.min.js"></script>
+    <script src="/js/modernizr.min.js"></script>
+    <script src="/js/jquery.easing.js"></script>
+    <script src="/js/jquery.scrollUp.min.js"></script>
+    <script src="/js/smooth-scroll.min.js"></script>
+    <script src="/js/jquery.magnific-popup.min.js"></script>
+    <script src="/js/jquery.sliderPro.min.js"></script>
+    <script src="/js/owl.carousel.min.js"></script>
+    <script src="/js/jquery.easypiechart.js"></script>
+    <script src="/js/jquery.countTo.js"></script>
+    <script src="/js/isotope.pkgd.min.js"></script>
+    <script src="/js/jquery.stellar.min.js"></script>
+    <script src="/js/jquery.waypoints.min.js"></script>
+    <script src="/js/wow.min.js"></script>
+    <script src="/js/jquery.nav.js"></script>
+    <script src="/js/custom.js"></script>
+
+  <link rel="stylesheet"
+        href="//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.4.0/styles/zenburn.min.css">
+
+</head>
+  <body>
+      <!-- THE HEADER + NAV -->
+
+
+<header>
+    <!-- Nav Menu start-->
+    <nav class="navbar clean-main-menu" role="navigation">
+        <div class="container">
+
+            <!-- Nav Toggle -->
+            <div class="navbar-header">
+                <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                </button>
+
+                <!-- Logo -->
+                <a class="navbar-brand logo" href="index.html" id="logo">
+                    YuXLan
+                </a>
+
+            </div>
+            <!-- Nav Toggle End -->
+
+            <!-- Nav-collapse start-->
+            <div id="nav-menu" class="navbar-collapse collapse" role="navigation">
+                <ul class="nav navbar-nav clean-menu-wrapper">
+                    
+                    <li>
+                        <a href="/" class="menu-item-link">
+                            首页
+                        </a>
+                    </li>
+                    
+                    <li>
+                        <a href="https://github.com/yuxlan" class="menu-item-link">
+                            作品集
+                        </a>
+                    </li>
+                    
+                </ul>
+            </div>
+            <!-- Nav-collapse End-->
+
+        </div>
+    </nav>
+    <!-- Nav Menu End-->
+</header>
+      <!-- 文章详情页对应的布局文件 -->
+
+
+<!-- SLIDER SECTION -->
+
+<div>
+    <img src="/images/4.jpg"/>
+</div>
+
+<section id="offer" class="clean-section-wrapper-1 clean-offer-section"
+         style="background: url('/images/top.png') bottom center no-repeat;
+                 background-size: 60px;">
+
+
+    <div class="container">
+        <div class="row">
+
+            <!-- Blogs -->
+            <div class="col-md-12 col-sm-12 col-xs-12 clean-section-header-1 wow fadeInDown">
+                <h1>
+                    <span class="clean-color-contras">
+                        WebSocket
+                    </span>
+                </h1>
+                <div class="clean-line"></div>
+                <div class="post-meta text-center">
+                    <span class="post-time">2017-05-24</span>
+                </div>
+                <p class="col-md-8 col-sm-10 col-xs-12 col-md-offset-2 col-sm-offset-1">
+                    <hr>
+<p><a href="https://www.zybuluo.com/yuxlan/note/764608" target="_blank" rel="external">作业部落链接地址</a></p>
+<hr>
+<ul>
+<li>WebSocket是一种双向通信协议，在建立连接后，WebSocket服务器和Browser/Client Agent都能主动地向对方发送或接收数据，就像Socket一样；</li>
+<li>WebSocket需要类似TCP的客户端和服务器端通过握手连接，连接成功后才能相互通信。</li>
+</ul>
+<hr>
+<p>传统Http响应交互图</p>
+<p> <img src="https://www.ibm.com/developerworks/cn/java/j-lo-WebSocket/img001.jpg" alt="传统Http响应交互图"></p>
+<hr>
+<p>WebSocket 请求响应客户端服务器交互图</p>
+<p><img src="https://www.ibm.com/developerworks/cn/java/j-lo-WebSocket/img002.jpg" alt="WebSocket 请求响应客户端服务器交互图"></p>
+<hr>
+<p>WebSocket 客户端 API 示例<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div></pre></td><td class="code"><pre><div class="line">// 申请一个WebSocket对象，参数是需要连接的服务器端的地址，同http协议开头一样，WebSocket协议的URL使用ws://开头，安全的WebSocket协议使用wss://开头</div><div class="line">var ws = new WebSocket(&quot;ws://echo.websocket.org&quot;);</div><div class="line"></div><div class="line">// 当Browser和WebSocketServer连接成功后，会触发onopen,</div><div class="line">ws.onopen = function()&#123;</div><div class="line">    ws.send(&quot;Test!&quot;);</div><div class="line">&#125;;</div><div class="line"></div><div class="line">// 当Browser接收到WebSocketServer发送过来的信息后，会触发onmessage，参数evt包含server传输过来的数据</div><div class="line">ws.onmessage = function(evt)&#123;</div><div class="line">    console.log(evt.data);</div><div class="line">    ws.close();</div><div class="line">&#125;;</div><div class="line"></div><div class="line">// 当Browser接收到关闭连接请求时，会触发onclose</div><div class="line">ws.onclose = function(evt)&#123;</div><div class="line">    console.log(&quot;WebSocketClosed!&quot;);</div><div class="line">&#125;;</div><div class="line"></div><div class="line">// 如果连接失败，发送接收或处理数据失败，会触发onerror</div><div class="line">ws.onerror = function(evt)&#123;</div><div class="line">    console.log(&quot;WebSocketError!&quot;);</div><div class="line">&#125;;</div></pre></td></tr></table></figure></p>
+<hr>
+<p>案例代码<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div><div class="line">36</div><div class="line">37</div><div class="line">38</div><div class="line">39</div><div class="line">40</div><div class="line">41</div><div class="line">42</div><div class="line">43</div><div class="line">44</div><div class="line">45</div><div class="line">46</div><div class="line">47</div><div class="line">48</div><div class="line">49</div><div class="line">50</div><div class="line">51</div><div class="line">52</div><div class="line">53</div><div class="line">54</div><div class="line">55</div><div class="line">56</div><div class="line">57</div><div class="line">58</div><div class="line">59</div><div class="line">60</div><div class="line">61</div><div class="line">62</div><div class="line">63</div><div class="line">64</div><div class="line">65</div><div class="line">66</div><div class="line">67</div><div class="line">68</div><div class="line">69</div><div class="line">70</div><div class="line">71</div><div class="line">72</div><div class="line">73</div><div class="line">74</div><div class="line">75</div><div class="line">76</div><div class="line">77</div></pre></td><td class="code"><pre><div class="line">var websocket = window.WebSocket || window.MozWebSocket;</div><div class="line">var isConnected = false;</div><div class="line"></div><div class="line">// 处理打开websocket服务</div><div class="line">function doOpen()&#123;</div><div class="line">    isConnected = true;</div><div class="line">    if(deviceType == &apos;B&apos;)&#123;</div><div class="line">        mapArea = &apos;mapB&apos;;</div><div class="line">        doLoginB(mapArea);</div><div class="line">    &#125; else&#123;</div><div class="line">        mapArea = &apos;mapA&apos;;</div><div class="line">        doLoginA(mapArea);</div><div class="line">    &#125;</div><div class="line">&#125;</div><div class="line"></div><div class="line">function doClose()&#123;</div><div class="line">    showDiagMsg(&quot;infoField&quot;,&quot;已经断开连接！&quot;,&quot;infoDialog&quot;);</div><div class="line">    isConnected = false;</div><div class="line">&#125;</div><div class="line"></div><div class="line">function doError()&#123;</div><div class="line">    showDiagMsg(&quot;infoField&quot;,&quot;连接失败！&quot;,&quot;infoDialog&quot;);</div><div class="line">    isConnected = false;</div><div class="line">&#125;</div><div class="line"></div><div class="line">// 处理服务端返回的信息，后台返回的 message 为 JSON 字符串，通过 jQuery 的 parseJSON API 格式化为 JSON Object 以便客户端处理。</div><div class="line">function doMessage(message)&#123;</div><div class="line">    var event = $.parseJSON(message.data);</div><div class="line">    doReciveEvent(event);</div><div class="line">&#125;</div><div class="line"></div><div class="line">// 处理客户端向服务端发送信息， message 是 JSON OBJ 对象，通过 JSON 标准 API 格式化字符串。</div><div class="line">function doSend(message)&#123;</div><div class="line">    if(websocket != null)&#123;</div><div class="line">        websocket.send(JSON.stringify(message));</div><div class="line">    &#125; else&#123;</div><div class="line">        showDiagMsg(&quot;infoField&quot;,&quot;已掉线，无法与服务器通信！&quot;,&quot;infoDialog&quot;);</div><div class="line">    &#125;</div><div class="line">&#125;</div><div class="line"></div><div class="line">// 初始化websocket</div><div class="line">function initWebSocket(wcUrl)&#123;</div><div class="line">    if(window.WebSocket)&#123;</div><div class="line">        websocket = new WebSocket(encodeURI(wcUrl));</div><div class="line">        websocket.onopen = doOpen;</div><div class="line">        websocket.onmessage = doMessage;</div><div class="line">        websocket.onclose = doClose;</div><div class="line">        websocket.onerror = doError;</div><div class="line">    &#125; else&#123;</div><div class="line">        showDiagMsg(&quot;infoField&quot;,&quot;设备不支持websocket！&quot;,&quot;infoDialog&quot;);</div><div class="line">    &#125;</div><div class="line">&#125;</div><div class="line"></div><div class="line">// 处理关闭websocket</div><div class="line">function doReciveEvent(event)&#123;</div><div class="line">    // 设备不存在，客户端断开连接</div><div class="line">    if(event.eventType == 101)&#123;</div><div class="line">        showDiagMsg(&quot;infoField&quot;,&quot;设备不存在或设备密码错误！&quot;,&quot;infoDialog&quot;);</div><div class="line">        websocket.close();</div><div class="line">    &#125; else if(event.eventType == 104 || event.eventType == 103)&#123; // 返回组设备，并计算目标位置信息，更新地图</div><div class="line">        clearGMapOverlays(mapB);</div><div class="line">        $.each(event.eventObjs,function(idx,item)&#123;</div><div class="line">            var deviceNm = item.deviceNm;</div><div class="line">            ...// Google或者百度地图API</div><div class="line">            var deviceLocale = new BMap.Point(item.lng,item.lat);</div><div class="line">            var newMarker;</div><div class="line">            if(item.status == &apos;target&apos;)&#123;</div><div class="line">                newMarker = addMarkToMap(mapB,deviceLocale,deviceNm,true);</div><div class="line">                ...</div><div class="line">            &#125; else&#123;</div><div class="line">                newMarker = addMarkToMap(mapB,devicelocale,deviceNm);</div><div class="line">            &#125;</div><div class="line">            markArray.push(newMarker);</div><div class="line">        &#125;);</div><div class="line">        showDiagMsg(&quot;infoField&quot;,&quot;地图已更新！&quot;,&quot;infoDialog&quot;);</div><div class="line">    &#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure></p>
+
+                    <br/><br/>
+                </p>
+
+                <!-- Next blog -->
+                <div class="pager-position">
+                    <ul class="pager">
+                        
+                        <li class="previous">
+                            <a href="/2017/05/24/ejs基本标签/" data-toggle="tooltip" data-placement="top"
+                               title="ejs基本标签">&larr; 上一篇</a>
+                        </li>
+                        
+                        
+                    </ul>
+                </div>
+                <!-- END -->
+
+            </div>
+            <!-- Blogs End -->
+
+
+
+        </div>
+    </div>
+</section>
+      <!-- FOOTER SECTION -->
+
+<footer class="background-one"
+        style="background: url('/images/bottom.png') top center no-repeat;
+        background-size: 60px;">
+    <div class="container">
+        <div class="row">
+            <div class="clean-footer-content">
+
+                <div class="clean-footer-logo wow bounceIn" data-wow-offset="0">
+                    <a href="index.html" id="logo-footer">
+                        YuXLan
+                    </a>
+                </div>
+
+                <p class="clean-copyright-info">
+                    Copyright &copy; <a href="http://www.miitbeian.gov.cn/" target="_blank">浙ICP备17018917号</a> - writted by YuXLan
+                </p>
+
+                <ul class="clean-footer-social-info">
+                    <li>
+                        <a href="https://github.com/yuxlan" target="_blank"><i class="fa fa-github"></i></a>
+                    </li>
+                    <li>
+                        <a href="https://codepen.io/YuXLan/" target="_blank"><i class="fa fa-codepen"></i></a>
+                    </li>
+                    <li>
+                        <a href="http://www.linkedin.com/in/%E5%B0%8F%E5%85%B0-%E4%BD%99-3467b513b/" target="_blank"><i class="fa fa-linkedin"></i></a>
+                    </li>
+                    <li>
+                        <a href="http://weibo.com/5287171180/profile?topnav=1&wvr=6&is_all=1" target="_blank"><i class="fa fa-weibo"></i></a>
+                    </li>
+                </ul>
+
+            </div>
+        </div>
+    </div>
+</footer>
+  </body>
+</html>

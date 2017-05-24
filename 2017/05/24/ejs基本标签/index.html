@@ -108,50 +108,86 @@
     </nav>
     <!-- Nav Menu End-->
 </header>
-      <!-- 文章归档页 -->
+      <!-- 文章详情页对应的布局文件 -->
 
-<section class="archive">
-    <h5>
-        最新
-    </h5>
-      <ul class="post-archive">
-        
-          <li class="post-item">
-            <span class="post-date">2017-05-24</span>
-            <a class="post-title" href="/2017/05/24/执行上下文/">执行上下文</a>
-          </li>
-        
-          <li class="post-item">
-            <span class="post-date">2017-05-24</span>
-            <a class="post-title" href="/2017/05/24/数据交互方式——关于get-post-getJSON-ajax的异同/">数据交互方式——关于get/post/getJSON/ajax的异同</a>
-          </li>
-        
-          <li class="post-item">
-            <span class="post-date">2017-05-24</span>
-            <a class="post-title" href="/2017/05/24/内存空间/">内存空间</a>
-          </li>
-        
-          <li class="post-item">
-            <span class="post-date">2017-05-24</span>
-            <a class="post-title" href="/2017/05/24/对象、构造函数、原型和原型链/">对象、构造函数、原型和原型链</a>
-          </li>
-        
-          <li class="post-item">
-            <span class="post-date">2017-05-24</span>
-            <a class="post-title" href="/2017/05/24/常见转义字符整理/">常见转义字符整理</a>
-          </li>
-        
-          <li class="post-item">
-            <span class="post-date">2017-05-24</span>
-            <a class="post-title" href="/2017/05/24/ejs基本标签/">ejs基本标签</a>
-          </li>
-        
-          <li class="post-item">
-            <span class="post-date">2017-05-24</span>
-            <a class="post-title" href="/2017/05/24/WebSocket/">WebSocket</a>
-          </li>
-        
-      </ul>
+
+<!-- SLIDER SECTION -->
+
+<div>
+    <img src="/images/4.jpg"/>
+</div>
+
+<section id="offer" class="clean-section-wrapper-1 clean-offer-section"
+         style="background: url('/images/top.png') bottom center no-repeat;
+                 background-size: 60px;">
+
+
+    <div class="container">
+        <div class="row">
+
+            <!-- Blogs -->
+            <div class="col-md-12 col-sm-12 col-xs-12 clean-section-header-1 wow fadeInDown">
+                <h1>
+                    <span class="clean-color-contras">
+                        ejs基本标签
+                    </span>
+                </h1>
+                <div class="clean-line"></div>
+                <div class="post-meta text-center">
+                    <span class="post-time">2017-05-24</span>
+                </div>
+                <p class="col-md-8 col-sm-10 col-xs-12 col-md-offset-2 col-sm-offset-1">
+                    <hr>
+<p><a href="https://www.zybuluo.com/yuxlan/note/755795" target="_blank" rel="external">作业部落链接地址</a></p>
+<hr>
+<ul>
+<li><p>&lt;% code %&gt;用于执行其中的JavaScript代码</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">&lt;% alert(&quot;hello world!&quot;) %&gt;</div></pre></td></tr></table></figure>
+</li>
+<li><p>&lt;%= code %&gt;对code进行HTML转义</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">&lt;h1&gt;&lt;%= title %&gt;&lt;/h1&gt;                 &lt;!-- 会显示title里存的值 --&gt;</div><div class="line">&lt;p&gt;&lt;%= &apos;hello world&apos; %&gt;&lt;/p&gt;           &lt;!-- 显示hello world --&gt;</div><div class="line">&lt;h1&gt;&lt;%= &apos;&lt;b&gt;hello world&lt;/b&gt;&apos; %&gt;&lt;/h1&gt;  &lt;!-- 加粗显示hello world --&gt;</div></pre></td></tr></table></figure>
+</li>
+</ul>
+<ul>
+<li><p>&lt;%- code %&gt;不会进行转义，不会执行该代码</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">&lt;h1&gt;&lt;%- title %&gt; asd &lt;/h1&gt;               &lt;!-- 只显示asd --&gt;</div><div class="line">&lt;p&gt;&lt;%# &apos;hello world&apos; %&gt; asd &lt;/p&gt;         &lt;!-- 只显示asd --&gt;</div></pre></td></tr></table></figure>
+</li>
+<li><p>&lt;%- include filename %&gt;加载其它页面模板</p>
+</li>
+<li><p>引入外部js和css文件</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">&lt;%- css(&apos;filename.css&apos;) %&gt;</div><div class="line">&lt;%- js(&apos;filename.js&apos;) %&gt;</div></pre></td></tr></table></figure>
+</li>
+</ul>
+
+                    <br/><br/>
+                </p>
+
+                <!-- Next blog -->
+                <div class="pager-position">
+                    <ul class="pager">
+                        
+                        <li class="previous">
+                            <a href="/2017/05/24/常见转义字符整理/" data-toggle="tooltip" data-placement="top"
+                               title="常见转义字符整理">&larr; 上一篇</a>
+                        </li>
+                        
+                        
+                        <li class="next">
+                            <a href="/2017/05/24/WebSocket/" data-toggle="tooltip" data-placement="top"
+                               title="WebSocket">下一篇 &rarr;</a>
+                        </li>
+                        
+                    </ul>
+                </div>
+                <!-- END -->
+
+            </div>
+            <!-- Blogs End -->
+
+
+
+        </div>
+    </div>
 </section>
       <!-- FOOTER SECTION -->
 
