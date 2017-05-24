@@ -129,7 +129,7 @@
             <div class="col-md-12 col-sm-12 col-xs-12 clean-section-header-1 wow fadeInDown">
                 <h1>
                     <span class="clean-color-contras">
-                        执行上下文
+                        
                     </span>
                 </h1>
                 <div class="clean-line"></div>
@@ -138,27 +138,14 @@
                 </div>
                 <p class="col-md-8 col-sm-10 col-xs-12 col-md-offset-2 col-sm-offset-1">
                     <hr>
-<p><a href="https://www.zybuluo.com/yuxlan/note/761656" target="_blank" rel="external">作业部落链接地址</a></p>
+<h2 id="title-变量对象"><a href="#title-变量对象" class="headerlink" title="title:变量对象"></a>title:变量对象</h2><hr>
+<p><a href="https://www.zybuluo.com/yuxlan/note/763082" target="_blank" rel="external">作业部落链接地址</a></p>
 <hr>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div></pre></td><td class="code"><pre><div class="line">var color = &apos;blue&apos;;</div><div class="line"></div><div class="line">function changeColor()&#123;</div><div class="line">    var anothorColor = &quot;red&quot;;</div><div class="line">    </div><div class="line">    function swapColor()&#123;</div><div class="line">        var tempColor = anothorColor;</div><div class="line">        anothorColor = color;</div><div class="line">        color = tempColor;</div><div class="line">    &#125;</div><div class="line">    </div><div class="line">    swapColor();</div><div class="line">&#125;</div></pre></td></tr></table></figure>
-<p><img src="https://timgsa.baidu.com/timg?image&amp;quality=80&amp;size=b10000_10000&amp;sec=1495984403&amp;di=02bc6af9ca3dd2f5276af1af9e1e4472&amp;imgtype=jpg&amp;src=http://f.hiphotos.baidu.com/image/pic/item/6159252dd42a283449b9cf7951b5c9ea15cebfa1.jpg" alt="此处输入图片的描述"></p>
+<p><img src="https://timgsa.baidu.com/timg?image&amp;quality=80&amp;size=b10000_10000&amp;sec=1496108461&amp;di=38b24a0bbb1ce584a93f46887381d1e4&amp;imgtype=jpg&amp;src=http://f.hiphotos.baidu.com/image/pic/item/728da9773912b31b6d01da5c8c18367adab4e152.jpg" alt="此处输入图片的描述"></p>
 <hr>
-<p>执行上下文可以理解为当前代码的执行环境，会形成一个作用域，JavaScript的运行环境大致包括三种环境：</p>
-<ol>
-<li>全局环境：JavaScript代码运行会首先进入该环境</li>
-<li>函数环境：当函数被调用执行时，会进入当前函数中执行代码</li>
-<li>eval</li>
-</ol>
+<p>变量对象和活动对象时同一个对象，只是处于执行上下文的不同生命阶段</p>
 <hr>
-<ol>
-<li>单线程</li>
-<li>同步执行，只有处于栈顶的上下文处于执行中，其它上下文需要等待</li>
-<li>全局上下文只有唯一一个，在关闭浏览器时出栈</li>
-<li>函数的执行上下文个数没有限制</li>
-<li>每次某个函数被调用，都会有新的上下文为其创建，包括其调用的是自身函数。</li>
-</ol>
-<hr>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div></pre></td><td class="code"><pre><div class="line">function f1()&#123;</div><div class="line">    var n = 999;</div><div class="line">    function f2()&#123;</div><div class="line">        alert(n);</div><div class="line">    &#125;</div><div class="line">    return f2; // 返回f2，但f2并未被执行</div><div class="line">&#125;</div><div class="line"></div><div class="line">var result = f1();</div><div class="line">result(); // 相当于执行f2</div></pre></td></tr></table></figure>
+<p>全局上下文的变量对象就是window对象，只要程序运行不结束，全局上下文就会一直存在，其它所有的上下文环境都能直接访问全局上下文属性。</p>
 
                     <br/><br/>
                 </p>
@@ -167,15 +154,10 @@
                 <div class="pager-position">
                     <ul class="pager">
                         
-                        <li class="previous">
-                            <a href="/2017/05/24/变量对象/" data-toggle="tooltip" data-placement="top"
-                               title="">&larr; 上一篇</a>
-                        </li>
-                        
                         
                         <li class="next">
-                            <a href="/2017/05/24/数据交互方式——关于get-post-getJSON-ajax的异同/" data-toggle="tooltip" data-placement="top"
-                               title="数据交互方式——关于get/post/getJSON/ajax的异同">下一篇 &rarr;</a>
+                            <a href="/2017/05/24/执行上下文/" data-toggle="tooltip" data-placement="top"
+                               title="执行上下文">下一篇 &rarr;</a>
                         </li>
                         
                     </ul>
