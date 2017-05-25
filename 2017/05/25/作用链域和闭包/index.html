@@ -129,22 +129,29 @@
             <div class="col-md-12 col-sm-12 col-xs-12 clean-section-header-1 wow fadeInDown">
                 <h1>
                     <span class="clean-color-contras">
-                        变量对象
+                        作用链域和闭包
                     </span>
                 </h1>
                 <div class="clean-line"></div>
                 <div class="post-meta text-center">
-                    <span class="post-time">2017-05-24</span>
+                    <span class="post-time">2017-05-25</span>
                 </div>
                 <p class="col-md-8 col-sm-10 col-xs-12 col-md-offset-2 col-sm-offset-1">
                     <hr>
-<p><a href="https://www.zybuluo.com/yuxlan/note/763082" target="_blank" rel="external">作业部落链接地址</a></p>
+<p><a href="https://www.zybuluo.com/yuxlan/note/761378" target="_blank" rel="external">作业部落链接地址</a></p>
 <hr>
-<p><img src="https://timgsa.baidu.com/timg?image&amp;quality=80&amp;size=b10000_10000&amp;sec=1496108461&amp;di=38b24a0bbb1ce584a93f46887381d1e4&amp;imgtype=jpg&amp;src=http://f.hiphotos.baidu.com/image/pic/item/728da9773912b31b6d01da5c8c18367adab4e152.jpg" alt="此处输入图片的描述"></p>
+<p><img src="https://timgsa.baidu.com/timg?image&amp;quality=80&amp;size=b10000_10000&amp;sec=1495962601&amp;di=b8764959628f6969382d4418e099c779&amp;imgtype=jpg&amp;src=http://d.hiphotos.baidu.com/image/pic/item/8cb1cb13495409239ebc020c9858d109b2de49ee.jpg" alt="此处输入图片的描述"></p>
 <hr>
-<p>变量对象和活动对象时同一个对象，只是处于执行上下文的不同生命阶段</p>
+<p>作用域链，是由当前环境与上层环境的一系列变量对象组成，保证了当前执行环境对访问权限的变量和函数的有序访问<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div></pre></td><td class="code"><pre><div class="line">var a = 20;</div><div class="line"></div><div class="line">function test()&#123;</div><div class="line">    var b = a+10;</div><div class="line">    </div><div class="line">    function innerTest()&#123;</div><div class="line">        var c = 10;</div><div class="line">        return b+c;</div><div class="line">    &#125;</div><div class="line">    </div><div class="line">    return innerTest();</div><div class="line">&#125;</div><div class="line"></div><div class="line">test();</div></pre></td></tr></table></figure></p>
 <hr>
-<p>全局上下文的变量对象就是window对象，只要程序运行不结束，全局上下文就会一直存在，其它所有的上下文环境都能直接访问全局上下文属性。</p>
+<p>闭包：当函数可以记住并访问所在的作用域（全局作用域外）时，就产生了闭包，即使函数是在当前作用域之外执行。</p>
+<blockquote>
+<p>假设函数A在函数B的内部进行定义了，并且当函数A在执行时，访问了函数B内部的变量对象，那么B就是一个闭包。</p>
+</blockquote>
+<hr>
+<p>函数的执行上下文，在执行完毕之后，生命周期结束，那么该函数的执行上下文就会失去引用，其占用的内存空间很快就会被垃圾回收器释放，闭包存在，就会阻止这一过程。<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div></pre></td><td class="code"><pre><div class="line">var fn = null;</div><div class="line"></div><div class="line">function foo()&#123;</div><div class="line">    var a = 2;</div><div class="line">    </div><div class="line">    function innerFoo()&#123;</div><div class="line">        console.log(a);</div><div class="line">    &#125;</div><div class="line">    </div><div class="line">    fn = innerFoo; // 将innerFoo的引用，赋值给全局变量中的fn</div><div class="line">&#125;</div><div class="line"></div><div class="line">function bar()&#123;</div><div class="line">    fn(); </div><div class="line">&#125;</div><div class="line"></div><div class="line">foo();</div><div class="line">bar(); // 2</div></pre></td></tr></table></figure></p>
+<hr>
+<p>通过闭包，可以在其它的执行上下文中，访问到函数的内部变量。</p>
 
                     <br/><br/>
                 </p>
@@ -153,15 +160,10 @@
                 <div class="pager-position">
                     <ul class="pager">
                         
-                        <li class="previous">
-                            <a href="/2017/05/25/作用链域和闭包/" data-toggle="tooltip" data-placement="top"
-                               title="作用链域和闭包">&larr; 上一篇</a>
-                        </li>
-                        
                         
                         <li class="next">
-                            <a href="/2017/05/24/执行上下文/" data-toggle="tooltip" data-placement="top"
-                               title="执行上下文">下一篇 &rarr;</a>
+                            <a href="/2017/05/24/变量对象/" data-toggle="tooltip" data-placement="top"
+                               title="变量对象">下一篇 &rarr;</a>
                         </li>
                         
                     </ul>
