@@ -108,25 +108,102 @@
     </nav>
     <!-- Nav Menu End-->
 </header>
-      <!-- 文章归档页 -->
+      <!-- 文章详情页对应的布局文件 -->
 
-<section class="archive">
-    <h5>
-        最新
-    </h5>
-      <ul class="post-archive">
-        
-          <li class="post-item">
-            <span class="post-date">2017-05-24</span>
-            <a class="post-title" href="/2017/05/24/ejs基本标签/">ejs基本标签</a>
-          </li>
-        
-          <li class="post-item">
-            <span class="post-date">2017-05-24</span>
-            <a class="post-title" href="/2017/05/24/WebSocket/">WebSocket</a>
-          </li>
-        
-      </ul>
+
+<!-- SLIDER SECTION -->
+
+<div>
+    <img src="/images/4.jpg"/>
+</div>
+
+<section id="offer" class="clean-section-wrapper-1 clean-offer-section"
+         style="background: url('/images/top.png') bottom center no-repeat;
+                 background-size: 60px;">
+
+
+    <div class="container">
+        <div class="row">
+
+            <!-- Blogs -->
+            <div class="col-md-12 col-sm-12 col-xs-12 clean-section-header-1 wow fadeInDown">
+                <h1>
+                    <span class="clean-color-contras">
+                        canvas常用操作整理
+                    </span>
+                </h1>
+                <div class="clean-line"></div>
+                <div class="post-meta text-center">
+                    <span class="post-time">2017-05-25</span>
+                </div>
+                <p class="col-md-8 col-sm-10 col-xs-12 col-md-offset-2 col-sm-offset-1">
+                    <hr>
+<p><a href="https://www.zybuluo.com/yuxlan/note/766568" target="_blank" rel="external">作业部落链接地址</a></p>
+<hr>
+<p>var canvas = document.getElementById(“id”);<br>var a = canvas.getContext(“2d”);</p>
+<hr>
+<blockquote>
+<ol>
+<li>beginPath():开始</li>
+<li>moveTo(x,y):起点坐标</li>
+<li>lineTo(x,y):目标坐标</li>
+<li>closePath():连接起点，闭合路径</li>
+<li>translate():移动</li>
+<li>rotate():旋转</li>
+<li>restore():恢复</li>
+<li>scale(x,y):缩放canvas对象</li>
+<li>save():保存</li>
+<li>rotate(angle):旋转图像</li>
+<li>quadraticCurveTo(X0,Y0,X1,Y1):绘制曲线，(X1,Y1)为曲线终点，(X0,Y0)为曲线的控制点，即在曲线旁边，对曲线产生一个拉力，通过调整控制点的位置，来改变曲线的曲率</li>
+<li>stroke():绘制</li>
+<li>strokeText(text,x,y,maxwidth):描绘文本轮廓,maxwidth为可选参数，用于限制字体大小</li>
+<li>strokeStyle():颜色设置</li>
+<li>strokeRect(x,y,width,height):使用当前的strokestyle来绘制一个矩形，而只绘制矩形的边缘</li>
+<li>fill:填充</li>
+<li>fillRect(x,y,width,height):绘制一个矩形，并以当前的fillStyle来填充</li>
+<li>fillStyle():样式填充</li>
+<li>fillText(text,x,y,maxwidth):填充文本内容</li>
+<li>drawImage(image,sx,sy,sw,sh,dx,dy,dw,dh):图片填充,(dx,dy)代表图片的左上角,dw/dh代表缩放为宽和高，(sx,sy,sw,sh)指定图片缩放时的裁剪范围</li>
+<li>createPattern():使用背景图片填充</li>
+<li>createLinearGradient(X0,Y0,X1,Y1)：沿直线从(X0,Y0)到(X1,Y1)的直线渐变</li>
+<li>addColorStop():渐变填充</li>
+<li>createRadialGradient(X0,Y0,R0,X1,Y1,R1):放射性渐变,(X0,Y0)为圆心，R0为半径，(X1,Y1)为另一个圆心，R1为另一个半径，渐变出现在两个圆中间的区域</li>
+<li>clearRect(x,y,width,height):清除指定矩形区域的像素</li>
+<li>.lineCap(butt | square | round):指定线条末端的样式</li>
+<li>.fillStyle:设置为CSS颜色，一个图案或一种颜色渐变</li>
+<li>.lineWidth:线条宽度设置</li>
+<li>.lineJoin(round):修改当前形状中线段的链接方式，让拐角变得更圆滑</li>
+<li>.shadowColor:任何CSS中的颜色值，可以使用透明度（alpha）</li>
+<li>.shadowOffsetX:像素值，值为正数，向右移动阴影，值为负数，向左移动阴影</li>
+<li>.shadowOffsetY:像素值，值为正数，向下移动阴影，值为负数，向上移动阴影</li>
+<li>.shadowBlur:高斯模糊值，值越大，阴影越模糊</li>
+</ol>
+</blockquote>
+
+                    <br/><br/>
+                </p>
+
+                <!-- Next blog -->
+                <div class="pager-position">
+                    <ul class="pager">
+                        
+                        
+                        <li class="next">
+                            <a href="/2017/05/25/作用链域和闭包/" data-toggle="tooltip" data-placement="top"
+                               title="作用链域和闭包">下一篇 &rarr;</a>
+                        </li>
+                        
+                    </ul>
+                </div>
+                <!-- END -->
+
+            </div>
+            <!-- Blogs End -->
+
+
+
+        </div>
+    </div>
 </section>
       <!-- FOOTER SECTION -->
 
