@@ -129,7 +129,7 @@
             <div class="col-md-12 col-sm-12 col-xs-12 clean-section-header-1 wow fadeInDown">
                 <h1>
                     <span class="clean-color-contras">
-                        有关web自适应
+                        WebSocket
                     </span>
                 </h1>
                 <div class="clean-line"></div>
@@ -138,76 +138,124 @@
                 </div>
                 <p class="col-md-8 col-sm-10 col-xs-12 col-md-offset-2 col-sm-offset-1">
                     <hr>
-<p><a href="https://www.zybuluo.com/yuxlan/note/777635" target="_blank" rel="external">作业部落链接地址</a></p>
+<p><a href="https://www.zybuluo.com/yuxlan/note/764608" target="_blank" rel="external">作业部落链接地址</a></p>
 <hr>
-<pre><code>&lt;meta name=&quot;viewport&quot; content=&quot;width=device-witdh,initial-scale=1.0,maximum-scale=1.0,user-scalable=0&quot;&gt;
+<ul>
+<li>WebSocket是一种双向通信协议，在建立连接后，WebSocket服务器和Browser/Client Agent都能主动地向对方发送或接收数据，就像Socket一样；</li>
+<li>WebSocket需要类似TCP的客户端和服务器端通过握手连接，连接成功后才能相互通信。</li>
+</ul>
+<hr>
+<p>传统Http响应交互图</p>
+<p> <img src="https://www.ibm.com/developerworks/cn/java/j-lo-WebSocket/img001.jpg" alt="传统Http响应交互图"></p>
+<hr>
+<p>WebSocket 请求响应客户端服务器交互图</p>
+<p><img src="https://www.ibm.com/developerworks/cn/java/j-lo-WebSocket/img002.jpg" alt="WebSocket 请求响应客户端服务器交互图"></p>
+<hr>
+<p>WebSocket 客户端 API 示例</p>
+<hr>
+<pre><code>// 申请一个WebSocket对象，参数是需要连接的服务器端的地址，同http协议开头一样，WebSocket协议的URL使用ws://开头，安全的WebSocket协议使用wss://开头
+var ws = new WebSocket(&quot;ws://echo.websocket.org&quot;);
+
+// 当Browser和WebSocketServer连接成功后，会触发onopen,
+ws.onopen = function(){
+    ws.send(&quot;Test!&quot;);
+};
+
+// 当Browser接收到WebSocketServer发送过来的信息后，会触发onmessage，参数evt包含server传输过来的数据
+ws.onmessage = function(evt){
+    console.log(evt.data);
+    ws.close();
+};
+
+// 当Browser接收到关闭连接请求时，会触发onclose
+ws.onclose = function(evt){
+    console.log(&quot;WebSocketClosed!&quot;);
+};
+
+// 如果连接失败，发送接收或处理数据失败，会触发onerror
+ws.onerror = function(evt){
+    console.log(&quot;WebSocketError!&quot;);
+};
 </code></pre><hr>
-<ul>
-<li>宽度自适应<br>外层容器按百分比铺满，子元素固定或左右浮动</li>
-</ul>
+<p>案例代码</p>
 <hr>
-<ul>
-<li>媒体查询</li>
-</ul>
-<hr>
-<pre><code>@media screen and (device-width:640px){} /*iphone4/iphone5*/
-@media screen and (device-width:750px){} /*iphone6*/
-@media screen and (device-width:1240px){} /*iphone6s*/
+<pre><code>var websocket = window.WebSocket || window.MozWebSocket;
+var isConnected = false;
 
-@media screen and (min-width:320px) and (max-width:650px){} /*手机*/
-@media screen and (min-width:650px) and (max-width:980px){} /*pad*/
-@media screen and (min-width:980px) and (max-width:1240px){} /*pc*/
-</code></pre><hr>
-<ul>
-<li>js和css控制</li>
-</ul>
-<hr>
-<pre><code>&lt;!DOCTYPE html&gt;
-&lt;html&gt;
-&lt;head&gt;
-    &lt;title&gt;测试&lt;/title&gt;
+// 处理打开websocket服务
+function doOpen(){
+    isConnected = true;
+    if(deviceType == &apos;B&apos;){
+        mapArea = &apos;mapB&apos;;
+        doLoginB(mapArea);
+    } else{
+        mapArea = &apos;mapA&apos;;
+        doLoginA(mapArea);
+    }
+}
 
-    &lt;meta name=&quot;viewport&quot; content=&quot;width=device-width,user-scalable=no,maximum-scale=1&quot; /&gt;
+function doClose(){
+    showDiagMsg(&quot;infoField&quot;,&quot;已经断开连接！&quot;,&quot;infoDialog&quot;);
+    isConnected = false;
+}
 
-    &lt;script type=&quot;text/javascript&quot;&gt;
-        (function() {
-          // deicePixelRatio ：设备像素
-          var scale = 1 / devicePixelRatio;
+function doError(){
+    showDiagMsg(&quot;infoField&quot;,&quot;连接失败！&quot;,&quot;infoDialog&quot;);
+    isConnected = false;
+}
 
-          //设置meta 压缩界面 模拟设备的高分辨率
-          document.querySelector(&apos;meta[name=&quot;viewport&quot;]&apos;).setAttribute(&apos;content&apos;, &apos;initial-scale=&apos; + scale + &apos;, maximum-scale=&apos; + scale + &apos;, minimum-scale=&apos; + scale + &apos;, user-scalable=no&apos;);
+// 处理服务端返回的信息，后台返回的 message 为 JSON 字符串，通过 jQuery 的 parseJSON API 格式化为 JSON Object 以便客户端处理。
+function doMessage(message){
+    var event = $.parseJSON(message.data);
+    doReciveEvent(event);
+}
 
-          //debounce 为节流函数，自己实现。或者引入underscoure即可。
-          var reSize = _.debounce(function() {
-              var deviceWidth = document.documentElement.clientWidth &gt; 1300 ? 1300 : document.documentElement.clientWidth;
+// 处理客户端向服务端发送信息， message 是 JSON OBJ 对象，通过 JSON 标准 API 格式化字符串。
+function doSend(message){
+    if(websocket != null){
+        websocket.send(JSON.stringify(message));
+    } else{
+        showDiagMsg(&quot;infoField&quot;,&quot;已掉线，无法与服务器通信！&quot;,&quot;infoDialog&quot;);
+    }
+}
 
-              //按照640像素下字体为100px的标准来，得到一个字体缩放比例值 6.4
-              document.documentElement.style.fontSize = (deviceWidth / 6.4) + &apos;px&apos;;
-          }, 50);
-          window.onresize = reSize;
-        })();
-    &lt;/script&gt;
+// 初始化websocket
+function initWebSocket(wcUrl){
+    if(window.WebSocket){
+        websocket = new WebSocket(encodeURI(wcUrl));
+        websocket.onopen = doOpen;
+        websocket.onmessage = doMessage;
+        websocket.onclose = doClose;
+        websocket.onerror = doError;
+    } else{
+        showDiagMsg(&quot;infoField&quot;,&quot;设备不支持websocket！&quot;,&quot;infoDialog&quot;);
+    }
+}
 
-    &lt;style type=&quot;text/css&quot;&gt;
-        html {
-          height: 100%;
-          width: 100%;
-          overflow: hidden;
-          font-size: 16px;
-        }
-        div {
-          height: 0.5rem;
-          widows: 0.5rem;
-          border: 0.01rem solid #19a39e;
-        }
-    &lt;/style&gt;
-
-&lt;body&gt;
-    &lt;div&gt;
-    &lt;/div&gt;
-&lt;/body&gt;
-
-&lt;/html&gt;
+// 处理关闭websocket
+function doReciveEvent(event){
+    // 设备不存在，客户端断开连接
+    if(event.eventType == 101){
+        showDiagMsg(&quot;infoField&quot;,&quot;设备不存在或设备密码错误！&quot;,&quot;infoDialog&quot;);
+        websocket.close();
+    } else if(event.eventType == 104 || event.eventType == 103){ // 返回组设备，并计算目标位置信息，更新地图
+        clearGMapOverlays(mapB);
+        $.each(event.eventObjs,function(idx,item){
+            var deviceNm = item.deviceNm;
+            ...// Google或者百度地图API
+            var deviceLocale = new BMap.Point(item.lng,item.lat);
+            var newMarker;
+            if(item.status == &apos;target&apos;){
+                newMarker = addMarkToMap(mapB,deviceLocale,deviceNm,true);
+                ...
+            } else{
+                newMarker = addMarkToMap(mapB,devicelocale,deviceNm);
+            }
+            markArray.push(newMarker);
+        });
+        showDiagMsg(&quot;infoField&quot;,&quot;地图已更新！&quot;,&quot;infoDialog&quot;);
+    }
+}
 </code></pre>
                     <br/><br/>
                 </p>
@@ -217,14 +265,14 @@
                     <ul class="pager">
                         
                         <li class="previous">
-                            <a href="/2017/06/07/WebSocket/" data-toggle="tooltip" data-placement="top"
-                               title="WebSocket">&larr; 上一篇</a>
+                            <a href="/2017/06/07/执行上下文/" data-toggle="tooltip" data-placement="top"
+                               title="执行上下文">&larr; 上一篇</a>
                         </li>
                         
                         
                         <li class="next">
-                            <a href="/2017/05/25/canvas常用操作整理/" data-toggle="tooltip" data-placement="top"
-                               title="canvas常用操作整理">下一篇 &rarr;</a>
+                            <a href="/2017/06/07/有关web自适应/" data-toggle="tooltip" data-placement="top"
+                               title="有关web自适应">下一篇 &rarr;</a>
                         </li>
                         
                     </ul>

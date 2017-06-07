@@ -129,7 +129,7 @@
             <div class="col-md-12 col-sm-12 col-xs-12 clean-section-header-1 wow fadeInDown">
                 <h1>
                     <span class="clean-color-contras">
-                        有关web自适应
+                        作用链域和闭包
                     </span>
                 </h1>
                 <div class="clean-line"></div>
@@ -138,77 +138,55 @@
                 </div>
                 <p class="col-md-8 col-sm-10 col-xs-12 col-md-offset-2 col-sm-offset-1">
                     <hr>
-<p><a href="https://www.zybuluo.com/yuxlan/note/777635" target="_blank" rel="external">作业部落链接地址</a></p>
+<p><a href="https://www.zybuluo.com/yuxlan/note/761378" target="_blank" rel="external">作业部落链接地址</a></p>
 <hr>
-<pre><code>&lt;meta name=&quot;viewport&quot; content=&quot;width=device-witdh,initial-scale=1.0,maximum-scale=1.0,user-scalable=0&quot;&gt;
+<p><img src="https://timgsa.baidu.com/timg?image&amp;quality=80&amp;size=b10000_10000&amp;sec=1495962601&amp;di=b8764959628f6969382d4418e099c779&amp;imgtype=jpg&amp;src=http://d.hiphotos.baidu.com/image/pic/item/8cb1cb13495409239ebc020c9858d109b2de49ee.jpg" alt="此处输入图片的描述"></p>
+<hr>
+<p>作用域链，是由当前环境与上层环境的一系列变量对象组成，保证了当前执行环境对访问权限的变量和函数的有序访问</p>
+<hr>
+<pre><code>var a = 20;
+
+function test(){
+    var b = a+10;
+
+    function innerTest(){
+        var c = 10;
+        return b+c;
+    }
+
+    return innerTest();
+}
+
+test();
 </code></pre><hr>
-<ul>
-<li>宽度自适应<br>外层容器按百分比铺满，子元素固定或左右浮动</li>
-</ul>
+<p>闭包：当函数可以记住并访问所在的作用域（全局作用域外）时，就产生了闭包，即使函数是在当前作用域之外执行。</p>
+<blockquote>
+<p>假设函数A在函数B的内部进行定义了，并且当函数A在执行时，访问了函数B内部的变量对象，那么B就是一个闭包。</p>
+</blockquote>
 <hr>
-<ul>
-<li>媒体查询</li>
-</ul>
+<p>函数的执行上下文，在执行完毕之后，生命周期结束，那么该函数的执行上下文就会失去引用，其占用的内存空间很快就会被垃圾回收器释放，闭包存在，就会阻止这一过程。</p>
 <hr>
-<pre><code>@media screen and (device-width:640px){} /*iphone4/iphone5*/
-@media screen and (device-width:750px){} /*iphone6*/
-@media screen and (device-width:1240px){} /*iphone6s*/
+<pre><code>var fn = null;
 
-@media screen and (min-width:320px) and (max-width:650px){} /*手机*/
-@media screen and (min-width:650px) and (max-width:980px){} /*pad*/
-@media screen and (min-width:980px) and (max-width:1240px){} /*pc*/
+function foo(){
+    var a = 2;
+
+    function innerFoo(){
+        console.log(a);
+    }
+
+    fn = innerFoo; // 将innerFoo的引用，赋值给全局变量中的fn
+}
+
+function bar(){
+    fn(); 
+}
+
+foo();
+bar(); // 2
 </code></pre><hr>
-<ul>
-<li>js和css控制</li>
-</ul>
-<hr>
-<pre><code>&lt;!DOCTYPE html&gt;
-&lt;html&gt;
-&lt;head&gt;
-    &lt;title&gt;测试&lt;/title&gt;
+<p>通过闭包，可以在其它的执行上下文中，访问到函数的内部变量。</p>
 
-    &lt;meta name=&quot;viewport&quot; content=&quot;width=device-width,user-scalable=no,maximum-scale=1&quot; /&gt;
-
-    &lt;script type=&quot;text/javascript&quot;&gt;
-        (function() {
-          // deicePixelRatio ：设备像素
-          var scale = 1 / devicePixelRatio;
-
-          //设置meta 压缩界面 模拟设备的高分辨率
-          document.querySelector(&apos;meta[name=&quot;viewport&quot;]&apos;).setAttribute(&apos;content&apos;, &apos;initial-scale=&apos; + scale + &apos;, maximum-scale=&apos; + scale + &apos;, minimum-scale=&apos; + scale + &apos;, user-scalable=no&apos;);
-
-          //debounce 为节流函数，自己实现。或者引入underscoure即可。
-          var reSize = _.debounce(function() {
-              var deviceWidth = document.documentElement.clientWidth &gt; 1300 ? 1300 : document.documentElement.clientWidth;
-
-              //按照640像素下字体为100px的标准来，得到一个字体缩放比例值 6.4
-              document.documentElement.style.fontSize = (deviceWidth / 6.4) + &apos;px&apos;;
-          }, 50);
-          window.onresize = reSize;
-        })();
-    &lt;/script&gt;
-
-    &lt;style type=&quot;text/css&quot;&gt;
-        html {
-          height: 100%;
-          width: 100%;
-          overflow: hidden;
-          font-size: 16px;
-        }
-        div {
-          height: 0.5rem;
-          widows: 0.5rem;
-          border: 0.01rem solid #19a39e;
-        }
-    &lt;/style&gt;
-
-&lt;body&gt;
-    &lt;div&gt;
-    &lt;/div&gt;
-&lt;/body&gt;
-
-&lt;/html&gt;
-</code></pre>
                     <br/><br/>
                 </p>
 
@@ -217,14 +195,14 @@
                     <ul class="pager">
                         
                         <li class="previous">
-                            <a href="/2017/06/07/WebSocket/" data-toggle="tooltip" data-placement="top"
-                               title="WebSocket">&larr; 上一篇</a>
+                            <a href="/2017/06/07/对象、构造函数、原型和原型链/" data-toggle="tooltip" data-placement="top"
+                               title="对象、构造函数、原型和原型链">&larr; 上一篇</a>
                         </li>
                         
                         
                         <li class="next">
-                            <a href="/2017/05/25/canvas常用操作整理/" data-toggle="tooltip" data-placement="top"
-                               title="canvas常用操作整理">下一篇 &rarr;</a>
+                            <a href="/2017/06/07/内存空间/" data-toggle="tooltip" data-placement="top"
+                               title="内存空间">下一篇 &rarr;</a>
                         </li>
                         
                     </ul>

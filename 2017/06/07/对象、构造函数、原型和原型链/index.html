@@ -129,7 +129,7 @@
             <div class="col-md-12 col-sm-12 col-xs-12 clean-section-header-1 wow fadeInDown">
                 <h1>
                     <span class="clean-color-contras">
-                        有关web自适应
+                        对象、构造函数、原型和原型链
                     </span>
                 </h1>
                 <div class="clean-line"></div>
@@ -138,77 +138,188 @@
                 </div>
                 <p class="col-md-8 col-sm-10 col-xs-12 col-md-offset-2 col-sm-offset-1">
                     <hr>
-<p><a href="https://www.zybuluo.com/yuxlan/note/777635" target="_blank" rel="external">作业部落链接地址</a></p>
+<p><a href="https://www.zybuluo.com/yuxlan/note/759999" target="_blank" rel="external">作业部落链接地址</a></p>
 <hr>
-<pre><code>&lt;meta name=&quot;viewport&quot; content=&quot;width=device-witdh,initial-scale=1.0,maximum-scale=1.0,user-scalable=0&quot;&gt;
+<ul>
+<li><strong>工厂模式</strong><br>在需要创建多个对象时，写一个模子，以此复制对象，减少重复创建对象的过程。</li>
+</ul>
+<hr>
+<pre><code>var createPerson = function(name,age){
+// 声明一个中间对象，即工厂模式的模子
+var o = new Object();
+// 依次添加属性和方法
+o.name = name;
+o.age = age;
+o.getName = function(){
+    return this.name;
+}
+return o;
+}
+
+// 创建实例
+var perJack = createPerson(&quot;Jack&quot;,21);
+var perTom = createPerson(&quot;Tom&quot;,24);
+</code></pre><p>麻烦：</p>
+<ol>
+<li>没法识别对象实例的类型</li>
+<li>不停地为getName方法分配空间</li>
+</ol>
+<hr>
+<ul>
+<li><strong>new</strong></li>
+</ul>
+<hr>
+<pre><code> function demo(){
+    console.log(this);
+}
+demo(); // window
+new demo(); // demo
+</code></pre><p>关于new做了什么：</p>
+<ol>
+<li>声明一个中间对象；</li>
+<li>将该中间对象的原型指向构造函数的原型；</li>
+<li>将构造对象的this指向该中间对象；</li>
+<li>返回该中间对象，即返回实例对象；</li>
+</ol>
+<hr>
+<pre><code>// 创建函数
+var Person = function(name,age){
+    this.name = name;
+    this.age = age;
+    this.getName = function(){
+        return this.name;
+    }
+}
+
+// 将构造函数以参数形式传入
+function New(func){
+    // 声明一个中间对象，该对象为最终返回的实例
+    var res = {};
+    if(func.prototype !== null){
+        // 将实例的原型指向构造函数的原型
+        res._proto_ = func.prototype;
+    }
+
+// ret为构造函数执行的结果，通过apply，将构造函数内部的this指向修改为指向res，即为实例对象
+var ret = func.apply(res,Array.prototype.slice.call(arguments,1));
+
+// 在构造函数中明确指定了返回对象时，new的执行结果就是返回该对象
+if((typeof ret === &quot;object&quot; || typeof ret === &quot;function&quot;) &amp;&amp; ret !== null){
+    return ret;
+}
+
+// 如果没有明确指定返回对象，则默认返回res,res就是实例对象
+return res;
+}
+
+// 通过new声明创建实例，p1实际接收的是new中返回的res
+var p1 = New(Person,&quot;Tom&quot;,20);
+console.log(p1.getName());
+
+// 也可以判断出实例的类型
+console.log(p1 instanceof Person);// true（instanceof识别实例类型）
 </code></pre><hr>
 <ul>
-<li>宽度自适应<br>外层容器按百分比铺满，子元素固定或左右浮动</li>
+<li><strong>构造函数</strong></li>
 </ul>
 <hr>
-<ul>
-<li>媒体查询</li>
-</ul>
-<hr>
-<pre><code>@media screen and (device-width:640px){} /*iphone4/iphone5*/
-@media screen and (device-width:750px){} /*iphone6*/
-@media screen and (device-width:1240px){} /*iphone6s*/
+<pre><code>var Person = function(name,age){
+this.name = name;
+this.age = age;
+this.getName = function(){
+    return this.name;
+}
+}
 
-@media screen and (min-width:320px) and (max-width:650px){} /*手机*/
-@media screen and (min-width:650px) and (max-width:980px){} /*pad*/
-@media screen and (min-width:980px) and (max-width:1240px){} /*pc*/
+var p1 = new Person(&quot;Tom&quot;,20);
+console.log(p1.getName()); // tom
+
+console.log(p1 instanceof Person);
 </code></pre><hr>
 <ul>
-<li>js和css控制</li>
+<li><strong>原型</strong></li>
 </ul>
 <hr>
-<pre><code>&lt;!DOCTYPE html&gt;
-&lt;html&gt;
-&lt;head&gt;
-    &lt;title&gt;测试&lt;/title&gt;
+<pre><code>// 声明构造函数
+function Person(name,age){
+    this.name = name;
+    this.age = age;
+}
 
-    &lt;meta name=&quot;viewport&quot; content=&quot;width=device-width,user-scalable=no,maximum-scale=1&quot; /&gt;
+// 通过prototype属性，将方法挂载到原型对象上
+Person.prototype.getName = function(){
+    return this.name;
+}
 
-    &lt;script type=&quot;text/javascript&quot;&gt;
-        (function() {
-          // deicePixelRatio ：设备像素
-          var scale = 1 / devicePixelRatio;
+var p1 = new Person(&quot;Tom&quot;,10);
+var p2 = new Person(&quot;Tim&quot;,20);
 
-          //设置meta 压缩界面 模拟设备的高分辨率
-          document.querySelector(&apos;meta[name=&quot;viewport&quot;]&apos;).setAttribute(&apos;content&apos;, &apos;initial-scale=&apos; + scale + &apos;, maximum-scale=&apos; + scale + &apos;, minimum-scale=&apos; + scale + &apos;, user-scalable=no&apos;);
+console.log(p1.getName === p2.getName); // true
+</code></pre><p><img src="https://timgsa.baidu.com/timg?image&amp;quality=80&amp;size=b10000_10000&amp;sec=1495208437&amp;di=c97910141f8dc88d1b686bf99d6ae6e6&amp;src=http://img.mp.itc.cn/upload/20170502/09c70412ef604d508d0eeda801cca030_th.png" alt="此处输入图片的描述"></p>
+<p><br><br>当我们访问实例对象中的属性和方法时，会优先访问实例对象本身的属性和方法。</p>
+<hr>
+<pre><code>function Person(name,age){
+    this.name = name;
+    this.age = age;
+    this.getName = function(){
+        console.log(&quot;this is&quot;);
+    }
+}
 
-          //debounce 为节流函数，自己实现。或者引入underscoure即可。
-          var reSize = _.debounce(function() {
-              var deviceWidth = document.documentElement.clientWidth &gt; 1300 ? 1300 : document.documentElement.clientWidth;
+Person.prototype.getName = function(){
+    return this.name;
+}
 
-              //按照640像素下字体为100px的标准来，得到一个字体缩放比例值 6.4
-              document.documentElement.style.fontSize = (deviceWidth / 6.4) + &apos;px&apos;;
-          }, 50);
-          window.onresize = reSize;
-        })();
-    &lt;/script&gt;
+var p1 = new Person(&quot;Tom&quot;,20);
+p1.getName(); // this is
+</code></pre><p><br><br>通过<strong>in</strong>来判断，一个对象是否拥有某个属性/方法，无论是该属性/方法存在于实例对象还是原型对象。</p>
+<hr>
+<pre><code>function Person(name,age){
+    this.name = name;
+    this.age = age;
+}
 
-    &lt;style type=&quot;text/css&quot;&gt;
-        html {
-          height: 100%;
-          width: 100%;
-          overflow: hidden;
-          font-size: 16px;
-        }
-        div {
-          height: 0.5rem;
-          widows: 0.5rem;
-          border: 0.01rem solid #19a39e;
-        }
-    &lt;/style&gt;
+Person.prototype.getName = function(){
+    return this.name;
+}
 
-&lt;body&gt;
-    &lt;div&gt;
-    &lt;/div&gt;
-&lt;/body&gt;
+var p1 = new Person(&quot;Tom&quot;,20);
+console.log(&quot;name&quot; in p1); // true
+</code></pre><p>最常用在判断当前页面是否在手机端打开。<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">isMobile = &quot;ontouchstart&quot; in document;</div></pre></td></tr></table></figure></p>
+<hr>
+<ul>
+<li><p><strong>原型链</strong></p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">function foo()&#123;&#125;</div></pre></td></tr></table></figure>
+<p>该函数的原型链如下：<br><img src="https://timgsa.baidu.com/timg?image&amp;quality=80&amp;size=b10000_10000&amp;sec=1495209980&amp;di=9a11f063ffbe24079a0371cd3f3ff2ce&amp;src=http://img.mp.itc.cn/upload/20170514/39556212c3c74944a58e150a6031dea9_th.jpg" alt="此处输入图片的描述"></p>
+</li>
+</ul>
+<hr>
+<ul>
+<li><strong>继承</strong></li>
+</ul>
+<hr>
+<pre><code>function Person(name,age){
+    this.name = name;
+    this.age = age;
+}
 
-&lt;/html&gt;
-</code></pre>
+Person.prototype.getName = function(){
+    return this.name;
+}
+
+// 构造函数的继承
+function cPerson(name,age,job){
+    Person.call(this,name,age);
+    this.job = job;
+}
+
+// 继承原型
+cPerson.prototype = new Person(name,age);
+
+// 添加更多的方法
+cPerson.prototyoe.getLive = function(){}
+</code></pre><p><img src="https://timgsa.baidu.com/timg?image&amp;quality=80&amp;size=b10000_10000&amp;sec=1495210632&amp;di=646e0e5058bd44f74afdf60e567113e0&amp;src=http://img.mp.itc.cn/upload/20170514/39556212c3c74944a58e150a6031dea9_th.jpg" alt="此处输入图片的描述"></p>
+
                     <br/><br/>
                 </p>
 
@@ -216,15 +327,10 @@
                 <div class="pager-position">
                     <ul class="pager">
                         
-                        <li class="previous">
-                            <a href="/2017/06/07/WebSocket/" data-toggle="tooltip" data-placement="top"
-                               title="WebSocket">&larr; 上一篇</a>
-                        </li>
-                        
                         
                         <li class="next">
-                            <a href="/2017/05/25/canvas常用操作整理/" data-toggle="tooltip" data-placement="top"
-                               title="canvas常用操作整理">下一篇 &rarr;</a>
+                            <a href="/2017/06/07/作用链域和闭包/" data-toggle="tooltip" data-placement="top"
+                               title="作用链域和闭包">下一篇 &rarr;</a>
                         </li>
                         
                     </ul>

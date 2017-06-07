@@ -129,7 +129,7 @@
             <div class="col-md-12 col-sm-12 col-xs-12 clean-section-header-1 wow fadeInDown">
                 <h1>
                     <span class="clean-color-contras">
-                        有关web自适应
+                        内存空间
                     </span>
                 </h1>
                 <div class="clean-line"></div>
@@ -138,77 +138,37 @@
                 </div>
                 <p class="col-md-8 col-sm-10 col-xs-12 col-md-offset-2 col-sm-offset-1">
                     <hr>
-<p><a href="https://www.zybuluo.com/yuxlan/note/777635" target="_blank" rel="external">作业部落链接地址</a></p>
+<p><a href="https://www.zybuluo.com/yuxlan/note/761433" target="_blank" rel="external">作业部落链接地址</a></p>
 <hr>
-<pre><code>&lt;meta name=&quot;viewport&quot; content=&quot;width=device-witdh,initial-scale=1.0,maximum-scale=1.0,user-scalable=0&quot;&gt;
+<ul>
+<li>变量对象和堆内存</li>
+</ul>
+<hr>
+<pre><code>var a1 = 0; // 变量对象
+var a2 = &quot;this is string&quot;; // 变量对象
+var a3 = null; // 变量对象
+
+var b = {m:20}; // 变量b存在于变量对象中，{m:20}作为对象存在于堆内存中
+
+var c = {1,2,3}; // 变量c存在于变量对象中，{1,2,3}作为对象存在于堆内存中
+</code></pre><p><img src="https://timgsa.baidu.com/timg?image&amp;quality=80&amp;size=b10000_10000&amp;sec=1496846975&amp;di=4924f8b75367d6a5ee1eb60f73bf5d06&amp;imgtype=jpg&amp;src=http%3A%2F%2Fa.hiphotos.baidu.com%2Fimage%2Fpic%2Fitem%2Fb999a9014c086e063544e72808087bf40bd1cbe1.jpg" alt="此处输入图片的描述"></p>
+<p>因此，访问堆内存中的引用数据类型时，实际上首先是从变量对象中获取了该对象的地址引用（或者地址指针），然后再从堆内存中取得所需的数据。</p>
+<hr>
+<ul>
+<li>JavaScript的内存生命周期<ol>
+<li>分配所需的内存</li>
+<li>使用分配到的内存</li>
+<li>不需要时将其释放</li>
+</ol>
+</li>
+</ul>
+<hr>
+<pre><code>var a = 20; // 在内存中给数值变量分配空间 
+alert(a + 100); // 使用内存
+a = null; // 使用完毕之后，释放内存空间
 </code></pre><hr>
-<ul>
-<li>宽度自适应<br>外层容器按百分比铺满，子元素固定或左右浮动</li>
-</ul>
-<hr>
-<ul>
-<li>媒体查询</li>
-</ul>
-<hr>
-<pre><code>@media screen and (device-width:640px){} /*iphone4/iphone5*/
-@media screen and (device-width:750px){} /*iphone6*/
-@media screen and (device-width:1240px){} /*iphone6s*/
+<p>p.s：在局部作用域中，当函数执行完毕，局部变量也就没有存在的必要，因此垃圾收集器很容易做出判断并回收。但是全局变量是什么时候需要自动释放内存空间则很难判断，因此在开发中应该尽量避免使用全局变量，以确保性能问题。</p>
 
-@media screen and (min-width:320px) and (max-width:650px){} /*手机*/
-@media screen and (min-width:650px) and (max-width:980px){} /*pad*/
-@media screen and (min-width:980px) and (max-width:1240px){} /*pc*/
-</code></pre><hr>
-<ul>
-<li>js和css控制</li>
-</ul>
-<hr>
-<pre><code>&lt;!DOCTYPE html&gt;
-&lt;html&gt;
-&lt;head&gt;
-    &lt;title&gt;测试&lt;/title&gt;
-
-    &lt;meta name=&quot;viewport&quot; content=&quot;width=device-width,user-scalable=no,maximum-scale=1&quot; /&gt;
-
-    &lt;script type=&quot;text/javascript&quot;&gt;
-        (function() {
-          // deicePixelRatio ：设备像素
-          var scale = 1 / devicePixelRatio;
-
-          //设置meta 压缩界面 模拟设备的高分辨率
-          document.querySelector(&apos;meta[name=&quot;viewport&quot;]&apos;).setAttribute(&apos;content&apos;, &apos;initial-scale=&apos; + scale + &apos;, maximum-scale=&apos; + scale + &apos;, minimum-scale=&apos; + scale + &apos;, user-scalable=no&apos;);
-
-          //debounce 为节流函数，自己实现。或者引入underscoure即可。
-          var reSize = _.debounce(function() {
-              var deviceWidth = document.documentElement.clientWidth &gt; 1300 ? 1300 : document.documentElement.clientWidth;
-
-              //按照640像素下字体为100px的标准来，得到一个字体缩放比例值 6.4
-              document.documentElement.style.fontSize = (deviceWidth / 6.4) + &apos;px&apos;;
-          }, 50);
-          window.onresize = reSize;
-        })();
-    &lt;/script&gt;
-
-    &lt;style type=&quot;text/css&quot;&gt;
-        html {
-          height: 100%;
-          width: 100%;
-          overflow: hidden;
-          font-size: 16px;
-        }
-        div {
-          height: 0.5rem;
-          widows: 0.5rem;
-          border: 0.01rem solid #19a39e;
-        }
-    &lt;/style&gt;
-
-&lt;body&gt;
-    &lt;div&gt;
-    &lt;/div&gt;
-&lt;/body&gt;
-
-&lt;/html&gt;
-</code></pre>
                     <br/><br/>
                 </p>
 
@@ -217,14 +177,14 @@
                     <ul class="pager">
                         
                         <li class="previous">
-                            <a href="/2017/06/07/WebSocket/" data-toggle="tooltip" data-placement="top"
-                               title="WebSocket">&larr; 上一篇</a>
+                            <a href="/2017/06/07/作用链域和闭包/" data-toggle="tooltip" data-placement="top"
+                               title="作用链域和闭包">&larr; 上一篇</a>
                         </li>
                         
                         
                         <li class="next">
-                            <a href="/2017/05/25/canvas常用操作整理/" data-toggle="tooltip" data-placement="top"
-                               title="canvas常用操作整理">下一篇 &rarr;</a>
+                            <a href="/2017/06/07/执行上下文/" data-toggle="tooltip" data-placement="top"
+                               title="执行上下文">下一篇 &rarr;</a>
                         </li>
                         
                     </ul>

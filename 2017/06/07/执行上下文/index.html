@@ -129,7 +129,7 @@
             <div class="col-md-12 col-sm-12 col-xs-12 clean-section-header-1 wow fadeInDown">
                 <h1>
                     <span class="clean-color-contras">
-                        有关web自适应
+                        执行上下文
                     </span>
                 </h1>
                 <div class="clean-line"></div>
@@ -138,76 +138,49 @@
                 </div>
                 <p class="col-md-8 col-sm-10 col-xs-12 col-md-offset-2 col-sm-offset-1">
                     <hr>
-<p><a href="https://www.zybuluo.com/yuxlan/note/777635" target="_blank" rel="external">作业部落链接地址</a></p>
+<p><a href="https://www.zybuluo.com/yuxlan/note/761656" target="_blank" rel="external">作业部落链接地址</a></p>
 <hr>
-<pre><code>&lt;meta name=&quot;viewport&quot; content=&quot;width=device-witdh,initial-scale=1.0,maximum-scale=1.0,user-scalable=0&quot;&gt;
-</code></pre><hr>
-<ul>
-<li>宽度自适应<br>外层容器按百分比铺满，子元素固定或左右浮动</li>
-</ul>
+<pre><code>var color = &apos;blue&apos;;
+
+function changeColor(){
+    var anothorColor = &quot;red&quot;;
+
+    function swapColor(){
+        var tempColor = anothorColor;
+        anothorColor = color;
+        color = tempColor;
+    }
+
+    swapColor();
+}
+</code></pre><p><img src="https://timgsa.baidu.com/timg?image&amp;quality=80&amp;size=b10000_10000&amp;sec=1495984403&amp;di=02bc6af9ca3dd2f5276af1af9e1e4472&amp;imgtype=jpg&amp;src=http://f.hiphotos.baidu.com/image/pic/item/6159252dd42a283449b9cf7951b5c9ea15cebfa1.jpg" alt="此处输入图片的描述"></p>
 <hr>
-<ul>
-<li>媒体查询</li>
-</ul>
+<p>执行上下文可以理解为当前代码的执行环境，会形成一个作用域，JavaScript的运行环境大致包括三种环境：</p>
+<ol>
+<li>全局环境：JavaScript代码运行会首先进入该环境</li>
+<li>函数环境：当函数被调用执行时，会进入当前函数中执行代码</li>
+<li>eval</li>
+</ol>
 <hr>
-<pre><code>@media screen and (device-width:640px){} /*iphone4/iphone5*/
-@media screen and (device-width:750px){} /*iphone6*/
-@media screen and (device-width:1240px){} /*iphone6s*/
-
-@media screen and (min-width:320px) and (max-width:650px){} /*手机*/
-@media screen and (min-width:650px) and (max-width:980px){} /*pad*/
-@media screen and (min-width:980px) and (max-width:1240px){} /*pc*/
-</code></pre><hr>
-<ul>
-<li>js和css控制</li>
-</ul>
+<ol>
+<li>单线程</li>
+<li>同步执行，只有处于栈顶的上下文处于执行中，其它上下文需要等待</li>
+<li>全局上下文只有唯一一个，在关闭浏览器时出栈</li>
+<li>函数的执行上下文个数没有限制</li>
+<li>每次某个函数被调用，都会有新的上下文为其创建，包括其调用的是自身函数。</li>
+</ol>
 <hr>
-<pre><code>&lt;!DOCTYPE html&gt;
-&lt;html&gt;
-&lt;head&gt;
-    &lt;title&gt;测试&lt;/title&gt;
+<pre><code>function f1(){
+    var n = 999;
+    function f2(){
+        alert(n);
+    }
+    return f2; // 返回f2，但f2并未被执行
+}
 
-    &lt;meta name=&quot;viewport&quot; content=&quot;width=device-width,user-scalable=no,maximum-scale=1&quot; /&gt;
+var result = f1();
 
-    &lt;script type=&quot;text/javascript&quot;&gt;
-        (function() {
-          // deicePixelRatio ：设备像素
-          var scale = 1 / devicePixelRatio;
-
-          //设置meta 压缩界面 模拟设备的高分辨率
-          document.querySelector(&apos;meta[name=&quot;viewport&quot;]&apos;).setAttribute(&apos;content&apos;, &apos;initial-scale=&apos; + scale + &apos;, maximum-scale=&apos; + scale + &apos;, minimum-scale=&apos; + scale + &apos;, user-scalable=no&apos;);
-
-          //debounce 为节流函数，自己实现。或者引入underscoure即可。
-          var reSize = _.debounce(function() {
-              var deviceWidth = document.documentElement.clientWidth &gt; 1300 ? 1300 : document.documentElement.clientWidth;
-
-              //按照640像素下字体为100px的标准来，得到一个字体缩放比例值 6.4
-              document.documentElement.style.fontSize = (deviceWidth / 6.4) + &apos;px&apos;;
-          }, 50);
-          window.onresize = reSize;
-        })();
-    &lt;/script&gt;
-
-    &lt;style type=&quot;text/css&quot;&gt;
-        html {
-          height: 100%;
-          width: 100%;
-          overflow: hidden;
-          font-size: 16px;
-        }
-        div {
-          height: 0.5rem;
-          widows: 0.5rem;
-          border: 0.01rem solid #19a39e;
-        }
-    &lt;/style&gt;
-
-&lt;body&gt;
-    &lt;div&gt;
-    &lt;/div&gt;
-&lt;/body&gt;
-
-&lt;/html&gt;
+result(); // 相当于执行f2
 </code></pre>
                     <br/><br/>
                 </p>
@@ -217,14 +190,14 @@
                     <ul class="pager">
                         
                         <li class="previous">
-                            <a href="/2017/06/07/WebSocket/" data-toggle="tooltip" data-placement="top"
-                               title="WebSocket">&larr; 上一篇</a>
+                            <a href="/2017/06/07/内存空间/" data-toggle="tooltip" data-placement="top"
+                               title="内存空间">&larr; 上一篇</a>
                         </li>
                         
                         
                         <li class="next">
-                            <a href="/2017/05/25/canvas常用操作整理/" data-toggle="tooltip" data-placement="top"
-                               title="canvas常用操作整理">下一篇 &rarr;</a>
+                            <a href="/2017/06/07/WebSocket/" data-toggle="tooltip" data-placement="top"
+                               title="WebSocket">下一篇 &rarr;</a>
                         </li>
                         
                     </ul>
