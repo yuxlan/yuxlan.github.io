@@ -129,35 +129,31 @@
             <div class="col-md-12 col-sm-12 col-xs-12 clean-section-header-1 wow fadeInDown">
                 <h1>
                     <span class="clean-color-contras">
-                        内存空间
+                        有关web自适应
                     </span>
                 </h1>
                 <div class="clean-line"></div>
                 <div class="post-meta text-center">
-                    <span class="post-time">2017-05-31</span>
+                    <span class="post-time">2017-06-07</span>
                 </div>
                 <p class="col-md-8 col-sm-10 col-xs-12 col-md-offset-2 col-sm-offset-1">
                     <hr>
-<p><a href="https://www.zybuluo.com/yuxlan/note/761433" target="_blank" rel="external">作业部落链接地址</a></p>
+<p><a href="https://www.zybuluo.com/yuxlan/note/777635" target="_blank" rel="external">作业部落链接地址</a></p>
 <hr>
+<pre><code>&lt;meta name=&quot;viewport&quot; content=&quot;width=device-witdh,initial-scale=1.0,maximum-scale=1.0,user-scalable=0&quot;&gt;
+</code></pre><hr>
 <ul>
-<li>变量对象和堆内存<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div></pre></td><td class="code"><pre><div class="line">var a1 = 0; // 变量对象</div><div class="line">var a2 = &quot;this is string&quot;; // 变量对象</div><div class="line">var a3 = null; // 变量对象</div><div class="line"></div><div class="line">var b = &#123;m:20&#125;; // 变量b存在于变量对象中，&#123;m:20&#125;作为对象存在于堆内存中</div><div class="line"></div><div class="line">var c = &#123;1,2,3&#125;; // 变量c存在于变量对象中，&#123;1,2,3&#125;作为对象存在于堆内存中</div></pre></td></tr></table></figure>
-</li>
-</ul>
-<p><img src="https://timgsa.baidu.com/timg?image&amp;quality=80&amp;size=b10000_10000&amp;sec=1496846975&amp;di=4924f8b75367d6a5ee1eb60f73bf5d06&amp;imgtype=jpg&amp;src=http%3A%2F%2Fa.hiphotos.baidu.com%2Fimage%2Fpic%2Fitem%2Fb999a9014c086e063544e72808087bf40bd1cbe1.jpg" alt="此处输入图片的描述"></p>
-<p>因此，访问堆内存中的引用数据类型时，实际上首先是从变量对象中获取了该对象的地址引用（或者地址指针），然后再从堆内存中取得所需的数据。</p>
-<hr>
-<ul>
-<li>JavaScript的内存生命周期<ol>
-<li>分配所需的内存</li>
-<li>使用分配到的内存</li>
-<li>不需要时将其释放<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">var a = 20; // 在内存中给数值变量分配空间 </div><div class="line">alert(a + 100); // 使用内存</div><div class="line">a = null; // 使用完毕之后，释放内存空间</div></pre></td></tr></table></figure>
-</li>
-</ol>
-</li>
+<li>宽度自适应<br>外层容器按百分比铺满，子元素固定或左右浮动</li>
 </ul>
 <hr>
-<p>p.s：在局部作用域中，当函数执行完毕，局部变量也就没有存在的必要，因此垃圾收集器很容易做出判断并回收。但是全局变量是什么时候需要自动释放内存空间则很难判断，因此在开发中应该尽量避免使用全局变量，以确保性能问题。</p>
+<ul>
+<li>媒体查询</li>
+</ul>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div></pre></td><td class="code"><pre><div class="line">@media screen and (device-width:640px)&#123;&#125; /*iphone4/iphone5*/</div><div class="line">@media screen and (device-width:750px)&#123;&#125; /*iphone6*/</div><div class="line">@media screen and (device-width:1240px)&#123;&#125; /*iphone6s*/</div><div class="line">    </div><div class="line">@media screen and (min-width:320px) and (max-width:650px)&#123;&#125; /*手机*/</div><div class="line">@media screen and (min-width:650px) and (max-width:980px)&#123;&#125; /*pad*/</div><div class="line">@media screen and (min-width:980px) and (max-width:1240px)&#123;&#125; /*pc*/</div></pre></td></tr></table></figure>
+<hr>
+<ul>
+<li>js和css控制<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div><div class="line">36</div><div class="line">37</div><div class="line">38</div></pre></td><td class="code"><pre><div class="line">&lt;!DOCTYPE html&gt;</div><div class="line">&lt;html&gt;</div><div class="line">&lt;head&gt;</div><div class="line">  &lt;title&gt;测试&lt;/title&gt;</div><div class="line">  &lt;meta name=&quot;viewport&quot; content=&quot;width=device-width,user-scalable=no,maximum-scale=1&quot; /&gt;</div><div class="line">  &lt;script type=&quot;text/javascript&quot;&gt;</div><div class="line">    (function() &#123;</div><div class="line">      // deicePixelRatio ：设备像素</div><div class="line">      var scale = 1 / devicePixelRatio;</div><div class="line">      //设置meta 压缩界面 模拟设备的高分辨率</div><div class="line">      document.querySelector(&apos;meta[name=&quot;viewport&quot;]&apos;).setAttribute(&apos;content&apos;, &apos;initial-scale=&apos; + scale + &apos;, maximum-scale=&apos; + scale + &apos;, minimum-scale=&apos; + scale + &apos;, user-scalable=no&apos;);</div><div class="line">      //debounce 为节流函数，自己实现。或者引入underscoure即可。</div><div class="line">      var reSize = _.debounce(function() &#123;</div><div class="line">          var deviceWidth = document.documentElement.clientWidth &gt; 1300 ? 1300 : document.documentElement.clientWidth;</div><div class="line">          //按照640像素下字体为100px的标准来，得到一个字体缩放比例值 6.4</div><div class="line">          document.documentElement.style.fontSize = (deviceWidth / 6.4) + &apos;px&apos;;</div><div class="line">      &#125;, 50);</div><div class="line">      window.onresize = reSize;</div><div class="line">    &#125;)();</div><div class="line">  &lt;/script&gt;</div><div class="line">  &lt;style type=&quot;text/css&quot;&gt;</div><div class="line">    html &#123;</div><div class="line">      height: 100%;</div><div class="line">      width: 100%;</div><div class="line">      overflow: hidden;</div><div class="line">      font-size: 16px;</div><div class="line">    &#125;</div><div class="line">    div &#123;</div><div class="line">      height: 0.5rem;</div><div class="line">      widows: 0.5rem;</div><div class="line">      border: 0.01rem solid #19a39e;</div><div class="line">    &#125;</div><div class="line">  &lt;/style&gt;</div><div class="line">  &lt;body&gt;</div><div class="line">    &lt;div&gt;</div><div class="line">    &lt;/div&gt;</div><div class="line">  &lt;/body&gt;</div><div class="line">&lt;/html&gt;</div></pre></td></tr></table></figure></li>
+</ul>
 
                     <br/><br/>
                 </p>
@@ -166,15 +162,10 @@
                 <div class="pager-position">
                     <ul class="pager">
                         
-                        <li class="previous">
-                            <a href="/2017/06/07/有关web自适应/" data-toggle="tooltip" data-placement="top"
-                               title="有关web自适应">&larr; 上一篇</a>
-                        </li>
-                        
                         
                         <li class="next">
-                            <a href="/2017/05/25/canvas常用操作整理/" data-toggle="tooltip" data-placement="top"
-                               title="canvas常用操作整理">下一篇 &rarr;</a>
+                            <a href="/2017/05/31/内存空间/" data-toggle="tooltip" data-placement="top"
+                               title="内存空间">下一篇 &rarr;</a>
                         </li>
                         
                     </ul>
