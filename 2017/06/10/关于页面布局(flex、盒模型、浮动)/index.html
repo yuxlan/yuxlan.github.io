@@ -108,40 +108,156 @@
     </nav>
     <!-- Nav Menu End-->
 </header>
-      <!-- 文章归档页 -->
+      <!-- 文章详情页对应的布局文件 -->
 
-<section class="archive">
-    <h5>
-        最新
-    </h5>
-      <ul class="post-archive">
-        
-          <li class="post-item">
-            <span class="post-date">2017-05-25</span>
-            <a class="post-title" href="/2017/05/25/canvas常用操作整理/">canvas常用操作整理</a>
-          </li>
-        
-          <li class="post-item">
-            <span class="post-date">2017-05-24</span>
-            <a class="post-title" href="/2017/05/24/变量对象/">变量对象</a>
-          </li>
-        
-          <li class="post-item">
-            <span class="post-date">2017-05-24</span>
-            <a class="post-title" href="/2017/05/24/数据交互方式——关于get-post-getJSON-ajax的异同/">数据交互方式——关于get/post/getJSON/ajax的异同</a>
-          </li>
-        
-          <li class="post-item">
-            <span class="post-date">2017-05-24</span>
-            <a class="post-title" href="/2017/05/24/常见转义字符整理/">常见转义字符整理</a>
-          </li>
-        
-          <li class="post-item">
-            <span class="post-date">2017-05-24</span>
-            <a class="post-title" href="/2017/05/24/ejs基本标签/">ejs基本标签</a>
-          </li>
-        
-      </ul>
+
+<!-- SLIDER SECTION -->
+
+<div>
+    <img src="/images/4.jpg"/>
+</div>
+
+<section id="offer" class="clean-section-wrapper-1 clean-offer-section"
+         style="background: url('/images/top.png') bottom center no-repeat;
+                 background-size: 60px;">
+
+
+    <div class="container">
+        <div class="row">
+
+            <!-- Blogs -->
+            <div class="col-md-12 col-sm-12 col-xs-12 clean-section-header-1 wow fadeInDown">
+                <h1>
+                    <span class="clean-color-contras">
+                        关于页面布局(flex、盒模型、浮动)
+                    </span>
+                </h1>
+                <div class="clean-line"></div>
+                <div class="post-meta text-center">
+                    <span class="post-time">2017-06-10</span>
+                </div>
+                <p class="col-md-8 col-sm-10 col-xs-12 col-md-offset-2 col-sm-offset-1">
+                    <hr>
+<p><a href="https://www.zybuluo.com/yuxlan/note/781417" target="_blank" rel="external">作业部落链接地址</a></p>
+<hr>
+<h4 id="css盒模型"><a href="#css盒模型" class="headerlink" title="css盒模型"></a><strong>css盒模型</strong></h4><hr>
+<p><img src="http://www.w3school.com.cn/i/ct_boxmodel.gif" alt="css盒模型"></p>
+<hr>
+<h4 id="Flex布局"><a href="#Flex布局" class="headerlink" title="Flex布局"></a><strong>Flex布局</strong></h4><hr>
+<pre><code>&lt;!-- 任何一个容器都可以指定为flex布局 --&gt;
+.box{
+    display: flex;
+}
+
+&lt;!-- 行内元素也可以使用flex布局 --&gt;
+.box{
+    display: inline-flex;
+}
+
+&lt;!-- Webkit内核的浏览器必须加上-webkit前缀 --&gt;
+.box{
+    display: -webkit-flex;
+    display: flex;
+}
+
+&lt;!-- 设置flex布局后，子元素的float/clear/vertical-align属性将全部失效 --&gt;
+</code></pre><hr>
+<ul>
+<li><strong>容器属性</strong></li>
+</ul>
+<hr>
+<p> 1.<strong>flex-direction</strong>决定主轴的方向</p>
+<hr>
+<pre><code>.box{
+    flex-direction: row(主轴水平，起点为左) | row-reverse(主轴水平，起点为右) | column(主轴垂直，起点为上) | column-reverse（主轴垂直，起点为下);
+}
+</code></pre><hr>
+<p> 2.<strong>flex-wrap</strong>决定当项目无法在主轴上一行排列时，如何换行</p>
+<hr>
+<pre><code>.box{
+    flex-wrap: nowrap(默认不换行) | wrap(换行第一行在上面) | wrap-reverse(换行第一行在下面);
+}
+</code></pre><hr>
+<p>3.<strong>flex-flow</strong>是flex-direction + flex-wrap，默认值为row nowrap</p>
+<hr>
+<p>4.<strong>justify-content</strong>定义了项目在主轴上的排列方式</p>
+<hr>
+<pre><code>.box{
+    justify-content: flex-start(左对齐) | flex-end(右对齐) | center(居中) | space-between(两端对齐项目之间间隔相等) | space-around(每个项目两侧之间的距离相等);
+}
+</code></pre><hr>
+<p>5.<strong>align-items</strong>定义项目在交叉轴上的对齐方式</p>
+<hr>
+<pre><code>.box{
+    align-items: flex-start(起点对齐) | flex-end(终点对齐) | center(居中对齐) | baseline(项目第一行文字对齐) | stretch(默认占满整个容器的高度);
+}
+</code></pre><hr>
+<p>6.<strong>align-content</strong>定义多根轴线对齐方式，如果只有一根轴线就不起作用</p>
+<hr>
+<pre><code>.box{
+    align-content: flex-start(起点对齐) | flex-end(终点对齐) | center(居中) | space-between(两端对齐所有轴线之间间隔相等) | space-around(所有轴线之间间隔相等) | stretch(默认占满整个交叉轴);
+}
+</code></pre><hr>
+<ul>
+<li><strong>项目属性</strong></li>
+</ul>
+<hr>
+<p>1.<strong>order</strong>定义项目排列顺序，从小到大，默认为0</p>
+<hr>
+<pre><code>.item{
+    order: 整数数值;
+}
+</code></pre><hr>
+<p>2.<strong>flex-grow</strong>定义项目的放大比例，默认为0</p>
+<hr>
+<pre><code>.item{
+    flex-grow: 数值;
+}
+</code></pre><hr>
+<p>3.<strong>flex-shrink</strong>定义项目的缩小比例，默认为1</p>
+<hr>
+<pre><code>.item{
+    flex-shrink: 数值;
+}
+</code></pre><hr>
+<p>4.<strong>flex-basis</strong>定义项目原定占据的主轴空间，默认为auto，即项目原大小</p>
+<hr>
+<pre><code>.item{
+    flex-basis: 
+}
+</code></pre><hr>
+<p>5.<strong>flex</strong>是flex-grow + flex-shrink + flex-basis，默认为0,1,auto，后两者可选</p>
+<hr>
+<p>6.<strong>align-self</strong>允许单个项目和其它项目不一样的对齐方式，可覆盖align-item，默认为auto，即继承容器的align-item</p>
+<hr>
+<pre><code>.iten{
+    align-self: auto | flex-start | flex-end | center | baseline | stretch;
+}
+</code></pre>
+                    <br/><br/>
+                </p>
+
+                <!-- Next blog -->
+                <div class="pager-position">
+                    <ul class="pager">
+                        
+                        
+                        <li class="next">
+                            <a href="/2017/06/10/webpack/" data-toggle="tooltip" data-placement="top"
+                               title="webpack">下一篇 &rarr;</a>
+                        </li>
+                        
+                    </ul>
+                </div>
+                <!-- END -->
+
+            </div>
+            <!-- Blogs End -->
+
+
+
+        </div>
+    </div>
 </section>
       <!-- FOOTER SECTION -->
 
