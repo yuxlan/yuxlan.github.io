@@ -129,197 +129,147 @@
             <div class="col-md-12 col-sm-12 col-xs-12 clean-section-header-1 wow fadeInDown">
                 <h1>
                     <span class="clean-color-contras">
-                        对象、构造函数、原型和原型链
+                        webpack
                     </span>
                 </h1>
                 <div class="clean-line"></div>
                 <div class="post-meta text-center">
-                    <span class="post-time">2017-06-07</span>
+                    <span class="post-time">2017-06-10</span>
                 </div>
                 <p class="col-md-8 col-sm-10 col-xs-12 col-md-offset-2 col-sm-offset-1">
                     <hr>
-<p><a href="https://www.zybuluo.com/yuxlan/note/759999" target="_blank" rel="external">作业部落链接地址</a></p>
+<p><a href="https://www.zybuluo.com/yuxlan/note/781078" target="_blank" rel="external">作业部落链接地址</a></p>
 <hr>
 <ul>
-<li><strong>工厂模式</strong><br>在需要创建多个对象时，写一个模子，以此复制对象，减少重复创建对象的过程。</li>
+<li>模块加载器兼打包工具，将各种资源作为模块来使用和处理</li>
 </ul>
-<hr>
-<pre><code>var createPerson = function(name,age){
-// 声明一个中间对象，即工厂模式的模子
-var o = new Object();
-// 依次添加属性和方法
-o.name = name;
-o.age = age;
-o.getName = function(){
-    return this.name;
-}
-return o;
-}
-
-// 创建实例
-var perJack = createPerson(&quot;Jack&quot;,21);
-var perTom = createPerson(&quot;Tom&quot;,24);
-</code></pre><p>麻烦：</p>
-<ol>
-<li>没法识别对象实例的类型</li>
-<li>不停地为getName方法分配空间</li>
-</ol>
 <hr>
 <ul>
-<li><strong>new</strong></li>
+<li>webpack.config.js</li>
 </ul>
 <hr>
-<pre><code> function demo(){
-    console.log(this);
-}
-demo(); // window
-new demo(); // demo
-</code></pre><p>关于new做了什么：</p>
-<ol>
-<li>声明一个中间对象；</li>
-<li>将该中间对象的原型指向构造函数的原型；</li>
-<li>将构造对象的this指向该中间对象；</li>
-<li>返回该中间对象，即返回实例对象；</li>
-</ol>
-<hr>
-<pre><code>// 创建函数
-var Person = function(name,age){
-    this.name = name;
-    this.age = age;
-    this.getName = function(){
-        return this.name;
-    }
-}
+<pre><code>// webpack 配置文件示例
 
-// 将构造函数以参数形式传入
-function New(func){
-    // 声明一个中间对象，该对象为最终返回的实例
-    var res = {};
-    if(func.prototype !== null){
-        // 将实例的原型指向构造函数的原型
-        res._proto_ = func.prototype;
-    }
+&apos;use strict&apos;;
 
-// ret为构造函数执行的结果，通过apply，将构造函数内部的this指向修改为指向res，即为实例对象
-var ret = func.apply(res,Array.prototype.slice.call(arguments,1));
+let webpack = require(&apos;webpack&apos;);
+let path = require(&apos;path&apos;);
 
-// 在构造函数中明确指定了返回对象时，new的执行结果就是返回该对象
-if((typeof ret === &quot;object&quot; || typeof ret === &quot;function&quot;) &amp;&amp; ret !== null){
-    return ret;
-}
+module.exports = {
 
-// 如果没有明确指定返回对象，则默认返回res,res就是实例对象
-return res;
-}
+    output: {
+        publicPath: &apos;/public&apos;,
+        path: path.join(__dirname,&apos;public/&apos;),
+        filename: &apos;bundle.js&apos;
+    },
 
-// 通过new声明创建实例，p1实际接收的是new中返回的res
-var p1 = New(Person,&quot;Tom&quot;,20);
-console.log(p1.getName());
+    entry: [&apos;webpack-dev-server/client?http://localhost:3000&apos;,
+            &apos;webpack/hot/only-dev-server&apos;,&apos;./src/index.js&apos;],
+    /* entry: {
+            index: &apos;./src/index.js&apos;
+        }, */
 
-// 也可以判断出实例的类型
-console.log(p1 instanceof Person);// true（instanceof识别实例类型）
+    // 每个模块的加载器配置
+    module: {
+        loaders: [
+            {
+                test: /\.css$/,
+                loader: &apos;style!css&apos;
+            },
+            {
+                test: /\.less$/,
+                loader: &apos;style!css!less&apos;
+            },
+            {
+                test: /\.scss$/,
+                loader: &apos;style!css!sass&apos;
+            },
+            {
+                test: /\.js$/,
+                exclude: /node_module/,
+                loader: [&apos;react-hot&apos;,&apos;babel?……&apos;]
+            },
+            {
+                test: /\.json$/,
+                loader: &apos;json&apos;
+            },
+            {
+                test: /\.(jpe?g|png|gif)$/,
+                loader: &apos;url?limit=10000&apos;
+            },
+            {
+                test: /\.(woff|woff2|ttf|eot|svg)(\?v=[0-9]\.[0-9]\.[0-9])?$/,
+                loader: &apos;url?limit=10000&amp;name=fonts/[hash:8].[name].[ext]&apos;
+            }
+        ]
+    },
+
+    // 插件项
+    plugins: [
+        new webpack.HotModuleReplacementPlugin(),
+        new webpack.DefinePlugin({
+            &apos;process.env&apos;:{
+                &apos;NODE_ENV&apos;: JSON.stringify(&apos;development&apos;)
+            }
+        })
+    ],
+
+    // 其它解决方案配置
+    resolve: {
+        // 查找module
+        root: &apos;……&apos; // 绝对路径
+        // 自动扩展文件后缀名
+        extensions: [&apos;&apos;, &apos;.js&apos;, &apos;.json&apos;, &apos;.scss&apos;],
+        // 模块别名定义
+        alias: {
+            AppStore: &apos;js/store/AppStore.js&apos;,
+            ActionType: &apos;js/action/Action.js&apos;,
+            AppAction: &apos;js/action/AppAction.js&apos;
+        }
+};
 </code></pre><hr>
 <ul>
-<li><strong>构造函数</strong></li>
+<li>webpack运行</li>
 </ul>
 <hr>
-<pre><code>var Person = function(name,age){
-this.name = name;
-this.age = age;
-this.getName = function(){
-    return this.name;
-}
-}
-
-var p1 = new Person(&quot;Tom&quot;,20);
-console.log(p1.getName()); // tom
-
-console.log(p1 instanceof Person);
+<pre><code>    $ webpack --display-error-details
+$ webpack --config XXX.js // 使用另一份配置文件
+    $ webpack --watch // 自动监听并打包
+$ webpack -p // 压缩混淆脚本
+    $ webpack -d // 生成map映射文件，告知模块最终被打包到了哪里
 </code></pre><hr>
 <ul>
-<li><strong>原型</strong></li>
+<li>配置入口文件</li>
 </ul>
 <hr>
-<pre><code>// 声明构造函数
-function Person(name,age){
-    this.name = name;
-    this.age = age;
-}
+<pre><code>import React from &apos;react&apos;;
+import {render} from &apos;react-dom&apos;;
+import {Router,browserHistory} from &apos;react-router&apos;;
+import {syncHistoryWithStore} from &apos;react-router-redux&apos;;
+import {Provider} from &apos;react-redux&apos;;
 
-// 通过prototype属性，将方法挂载到原型对象上
-Person.prototype.getName = function(){
-    return this.name;
-}
+import &apos;font-awesome/css/font-awesome.css&apos;;
+import &apos;react-s-alert/dist/s-alert-default.css&apos;;
+import &apos;bootstrap/dist/css/bootstrap.css&apos;;
+import &apos;./stylesheets/index.less&apos;;
 
-var p1 = new Person(&quot;Tom&quot;,10);
-var p2 = new Person(&quot;Tim&quot;,20);
 
-console.log(p1.getName === p2.getName); // true
-</code></pre><p><img src="https://timgsa.baidu.com/timg?image&amp;quality=80&amp;size=b10000_10000&amp;sec=1495208437&amp;di=c97910141f8dc88d1b686bf99d6ae6e6&amp;src=http://img.mp.itc.cn/upload/20170502/09c70412ef604d508d0eeda801cca030_th.png" alt="此处输入图片的描述"></p>
-<p><br><br>当我们访问实例对象中的属性和方法时，会优先访问实例对象本身的属性和方法。</p>
-<hr>
-<pre><code>function Person(name,age){
-    this.name = name;
-    this.age = age;
-    this.getName = function(){
-        console.log(&quot;this is&quot;);
-    }
-}
+import routes from &apos;./routes&apos;;
 
-Person.prototype.getName = function(){
-    return this.name;
-}
+import configureStore from &apos;./store/configureStore&apos;;
 
-var p1 = new Person(&quot;Tom&quot;,20);
-p1.getName(); // this is
-</code></pre><p><br><br>通过<strong>in</strong>来判断，一个对象是否拥有某个属性/方法，无论是该属性/方法存在于实例对象还是原型对象。</p>
-<hr>
-<pre><code>function Person(name,age){
-    this.name = name;
-    this.age = age;
-}
+var store = configureStore(browserHistory);
+var history = syncHistoryWithStore(browserHistory,store);
 
-Person.prototype.getName = function(){
-    return this.name;
-}
-
-var p1 = new Person(&quot;Tom&quot;,20);
-console.log(&quot;name&quot; in p1); // true
-</code></pre><p>最常用在判断当前页面是否在手机端打开。<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">isMobile = &quot;ontouchstart&quot; in document;</div></pre></td></tr></table></figure></p>
-<hr>
-<ul>
-<li><p><strong>原型链</strong></p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">function foo()&#123;&#125;</div></pre></td></tr></table></figure>
-<p>该函数的原型链如下：<br><img src="https://timgsa.baidu.com/timg?image&amp;quality=80&amp;size=b10000_10000&amp;sec=1495209980&amp;di=9a11f063ffbe24079a0371cd3f3ff2ce&amp;src=http://img.mp.itc.cn/upload/20170514/39556212c3c74944a58e150a6031dea9_th.jpg" alt="此处输入图片的描述"></p>
-</li>
-</ul>
-<hr>
-<ul>
-<li><strong>继承</strong></li>
-</ul>
-<hr>
-<pre><code>function Person(name,age){
-    this.name = name;
-    this.age = age;
-}
-
-Person.prototype.getName = function(){
-    return this.name;
-}
-
-// 构造函数的继承
-function cPerson(name,age,job){
-    Person.call(this,name,age);
-    this.job = job;
-}
-
-// 继承原型
-cPerson.prototype = new Person(name,age);
-
-// 添加更多的方法
-cPerson.prototyoe.getLive = function(){}
-</code></pre><p><img src="https://timgsa.baidu.com/timg?image&amp;quality=80&amp;size=b10000_10000&amp;sec=1495210632&amp;di=646e0e5058bd44f74afdf60e567113e0&amp;src=http://img.mp.itc.cn/upload/20170514/39556212c3c74944a58e150a6031dea9_th.jpg" alt="此处输入图片的描述"></p>
-
+render(
+    &lt;Provider store={store}&gt;
+        &lt;Router history={history}&gt;
+            {routes()}
+        &lt;/Router&gt;
+    &lt;/Provider&gt;
+    ,document.getElementById(&apos;root&apos;)
+)
+</code></pre>
                     <br/><br/>
                 </p>
 
@@ -327,15 +277,10 @@ cPerson.prototyoe.getLive = function(){}
                 <div class="pager-position">
                     <ul class="pager">
                         
-                        <li class="previous">
-                            <a href="/2017/06/10/webpack/" data-toggle="tooltip" data-placement="top"
-                               title="webpack">&larr; 上一篇</a>
-                        </li>
-                        
                         
                         <li class="next">
-                            <a href="/2017/06/07/作用链域和闭包/" data-toggle="tooltip" data-placement="top"
-                               title="作用链域和闭包">下一篇 &rarr;</a>
+                            <a href="/2017/06/07/对象、构造函数、原型和原型链/" data-toggle="tooltip" data-placement="top"
+                               title="对象、构造函数、原型和原型链">下一篇 &rarr;</a>
                         </li>
                         
                     </ul>
