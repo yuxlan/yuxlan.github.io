@@ -135,22 +135,206 @@
             <div class="col-md-12 col-sm-12 col-xs-12 clean-section-header-1 wow fadeInDown">
                 <h1>
                     <span class="clean-color-contras">
-                        变量对象
+                        关于js的this
                     </span>
                 </h1>
                 <div class="clean-line"></div>
                 <div class="post-meta text-center">
-                    <span class="post-time">2017-05-24</span>
+                    <span class="post-time">2017-06-13</span>
                 </div>
                 <p class="col-md-8 col-sm-10 col-xs-12 col-md-offset-2 col-sm-offset-1">
                     <hr>
-<p><a href="https://www.zybuluo.com/yuxlan/note/763082" target="_blank" rel="external">作业部落链接地址</a></p>
+<p><a href="https://www.zybuluo.com/yuxlan/note/783897" target="_blank" rel="external">作业部落链接地址</a></p>
 <hr>
-<p><img src="https://timgsa.baidu.com/timg?image&amp;quality=80&amp;size=b10000_10000&amp;sec=1496108461&amp;di=38b24a0bbb1ce584a93f46887381d1e4&amp;imgtype=jpg&amp;src=http://f.hiphotos.baidu.com/image/pic/item/728da9773912b31b6d01da5c8c18367adab4e152.jpg" alt="此处输入图片的描述"></p>
+<ul>
+<li>全局对象中的this，指向它本身</li>
+</ul>
 <hr>
-<p>变量对象和活动对象时同一个对象，只是处于执行上下文的不同生命阶段</p>
+<pre><code>// 通过this绑定到全局对象
+this.a2 = 20;
+
+// 通过声明绑定到变量对象，但在全局环境中，变量对象就是它自身
+var a1 = 10;
+
+// 仅仅只有赋值操作，标识符会隐式绑定到全局对象
+a3 = 30;
+
+// 输出结果会全部符合预期
+console.log(a1); // 10
+console.log(a2); // 20
+console.log(a3); // 30
+</code></pre><hr>
+<ul>
+<li>函数中的this</li>
+</ul>
 <hr>
-<p>全局上下文的变量对象就是window对象，只要程序运行不结束，全局上下文就会一直存在，其它所有的上下文环境都能直接访问全局上下文属性。</p>
+<pre><code>// demo01
+var a = 20;
+function fn() {
+    console.log(this.a);
+}
+fn(); // 20
+
+// demo02
+var a = 20;
+function fn() {
+    function foo() {
+        console.log(this.a);
+    }
+    foo();
+}
+fn(); // 20
+
+// demo03
+var a = 20;
+var obj = {
+    a: 10,
+    c: this.a + 20,
+    fn: function () {
+        return this.a;
+    }
+}
+
+console.log(obj.c); // 40
+console.log(obj.fn()); // 10
+</code></pre><hr>
+<ul>
+<li>在一个函数上下文中，this由调用者提供，由调用函数的方式来决定。</li>
+<li>如果调用者函数，被某一个对象所拥有，那么该函数在调用时，内部的this指向该对象。</li>
+<li>如果函数独立调用，那么该函数内部的this，则指向undefined。但是在非严格模式中，当this指向undefined时，它会被自动指向全局对象。</li>
+</ul>
+<hr>
+<pre><code>// 为了能够准确判断，我们在函数内部使用严格模式，因为非严格模式会自动指向全局
+function fn() {
+    &apos;use strict&apos;;
+    console.log(this);
+}
+
+fn();  // fn是调用者，独立调用 // undefined
+window.fn();  // fn是调用者，被window所拥有 // window
+</code></pre><hr>
+<pre><code>var a = 20;
+var foo = {
+    a: 10,
+    getA: function () {
+        return this.a;
+    }
+}
+console.log(foo.getA()); // 10 // getA并非独立调用,为foo所拥有
+
+var test = foo.getA;
+console.log(test());  // 20 // test是独立调用
+</code></pre><hr>
+<ul>
+<li>使用call,apply显示指定this,第一个参数指定this指向，后面的参数向要执行的函数传参，唯一不同的，call是一个一个地传参，apply是以数组形式传参</li>
+</ul>
+<hr>
+<pre><code>function fn() {
+    console.log(this.a);
+}
+var obj = {
+    a: 20
+}
+
+fn.call(obj); // 20
+</code></pre><hr>
+<pre><code>function fn(num1, num2) {
+    console.log(this.a + num1 + num2);
+}
+var obj = {
+    a: 20
+}
+
+fn.call(obj, 100, 10); // 130
+fn.apply(obj, [20, 10]); // 50
+</code></pre><hr>
+<ul>
+<li>将类数组对象转化为数组</li>
+</ul>
+<hr>
+<pre><code>function exam(a, b, c, d, e) {
+
+    // 先看看函数的自带属性 arguments 什么是样子的
+    console.log(arguments);
+
+    // 使用call/apply将arguments转换为数组, 返回结果为数组，arguments自身不会改变
+    var arg = [].slice.call(arguments);
+
+    console.log(arg);
+}
+
+exam(2, 8, 9, 10, 3);
+
+// result:
+// { &apos;0&apos;: 2, &apos;1&apos;: 8, &apos;2&apos;: 9, &apos;3&apos;: 10, &apos;4&apos;: 3 }
+// [ 2, 8, 9, 10, 3 ]
+//
+// 也常常使用该方法将DOM中的nodelist转换为数组
+// [].slice.call( document.getElementsByTagName(&apos;li&apos;) );
+</code></pre><hr>
+<ul>
+<li>修改this指向</li>
+</ul>
+<hr>
+<pre><code>var foo = {
+    name: &apos;joker&apos;,
+    showName: function() {
+      console.log(this.name);
+    }
+}
+var bar = {
+    name: &apos;rose&apos;
+}
+foo.showName.call(bar);
+</code></pre><hr>
+<ul>
+<li>实现继承</li>
+</ul>
+<hr>
+<pre><code>// 定义父级的构造函数
+var Person = function(name, age) {
+    this.name = name;
+    this.age  = age;
+    this.gender = [&apos;man&apos;, &apos;woman&apos;];
+}
+
+// 定义子类的构造函数
+var Student = function(name, age, high) {
+
+    // use call
+    Person.call(this, name, age);
+    this.high = high;
+}
+Student.prototype.message = function() {
+    console.log(&apos;name:&apos;+this.name+&apos;, age:&apos;+this.age+&apos;, high:&apos;+this.high+&apos;, gender:&apos;+this.gender[0]+&apos;;&apos;);
+}
+
+new Student(&apos;xiaom&apos;, 12, &apos;150cm&apos;).message();
+
+// result
+// ----------
+// name:xiaom, age:12, high:150cm, gender:man;
+</code></pre><hr>
+<ul>
+<li>构造函数和原型方法上的this</li>
+</ul>
+<hr>
+<pre><code>function Person(name, age) {
+
+    // 这里的this指向了p1
+    this.name = name;
+    this.age = age;  
+}
+
+Person.prototype.getName = function() {
+
+    // 这里的this也指向了p1
+    return this.name;
+}
+
+var p1 = new Person(&apos;Nick&apos;, 20);
+p1.getName();
+</code></pre><hr>
 
                     <br/><br/>
                 </p>
@@ -159,15 +343,10 @@
                 <div class="pager-position">
                     <ul class="pager">
                         
-                        <li class="previous">
-                            <a href="/2017/05/25/canvas常用操作整理/" data-toggle="tooltip" data-placement="top"
-                               title="canvas常用操作整理">&larr; 上一篇</a>
-                        </li>
-                        
                         
                         <li class="next">
-                            <a href="/2017/05/24/数据交互方式——关于get-post-getJSON-ajax的异同/" data-toggle="tooltip" data-placement="top"
-                               title="数据交互方式——关于get/post/getJSON/ajax的异同">下一篇 &rarr;</a>
+                            <a href="/2017/06/10/关于页面布局(flex、盒模型、浮动)/" data-toggle="tooltip" data-placement="top"
+                               title="关于页面布局(flex、盒模型、浮动)">下一篇 &rarr;</a>
                         </li>
                         
                     </ul>
