@@ -11,7 +11,7 @@
 .header .blog-title .logo {
   color: #aaa;
   font-size: 2em;
-  font-family: "Pacifico", cursive, LiSu, sans-serif;
+  font-family: 'Pacifico', cursive, LiSu, sans-serif;
   text-decoration: none;
 }
 .header .menu {
@@ -137,7 +137,6 @@
   .navbar-brand {
     float: none;
     font-size: 18px;
-    font-family: 'Pacifico',cursive,LiSu,sans-serif;
     line-height: 20px;
     padding: 15px;
   }
