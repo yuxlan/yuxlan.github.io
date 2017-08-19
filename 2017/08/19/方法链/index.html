@@ -114,55 +114,89 @@
     </nav>
     <!-- Nav Menu End-->
 </header>
-      <!-- 文章归档页 -->
+      <!-- 文章详情页对应的布局文件 -->
 
-<section class="archive">
-    <h5>
-        归档
-    </h5>
-      <ul class="post-archive">
-        
-          <li class="post-item">
-            <span class="post-date">2017-08-19</span>
-            <a class="post-title" href="/2017/08/19/js类型转换/">js类型转换</a>
-          </li>
-        
-          <li class="post-item">
-            <span class="post-date">2017-08-19</span>
-            <a class="post-title" href="/2017/08/19/js正则表达式验证/">js正则表达式验证</a>
-          </li>
-        
-          <li class="post-item">
-            <span class="post-date">2017-08-19</span>
-            <a class="post-title" href="/2017/08/19/方法链/">方法链</a>
-          </li>
-        
-          <li class="post-item">
-            <span class="post-date">2017-07-19</span>
-            <a class="post-title" href="/2017/07/19/十大经典排序算法的 JS 版/">十大经典排序算法的 JS 版</a>
-          </li>
-        
-          <li class="post-item">
-            <span class="post-date">2017-06-19</span>
-            <a class="post-title" href="/2017/06/19/SVN版本控制工具/">SVN版本控制工具</a>
-          </li>
-        
-          <li class="post-item">
-            <span class="post-date">2017-06-13</span>
-            <a class="post-title" href="/2017/06/13/关于js的this/">关于js的this</a>
-          </li>
-        
-          <li class="post-item">
-            <span class="post-date">2017-06-10</span>
-            <a class="post-title" href="/2017/06/10/关于页面布局(flex、盒模型、浮动)/">关于页面布局(flex、盒模型、浮动)</a>
-          </li>
-        
-          <li class="post-item">
-            <span class="post-date">2017-06-10</span>
-            <a class="post-title" href="/2017/06/10/webpack/">webpack</a>
-          </li>
-        
-      </ul>
+
+<!-- SLIDER SECTION -->
+
+<div>
+    <img src="/images/4.jpg"/>
+</div>
+
+<section id="offer" class="clean-section-wrapper-1 clean-offer-section"
+         style="background: url('/images/top.png') bottom center no-repeat;
+                 background-size: 60px;">
+
+
+    <div class="container">
+        <div class="row">
+
+            <!-- Blogs -->
+            <div class="col-md-12 col-sm-12 col-xs-12 clean-section-header-1 wow fadeInDown">
+                <h1>
+                    <span class="clean-color-contras">
+                        方法链
+                    </span>
+                </h1>
+                <div class="clean-line"></div>
+                <div class="post-meta text-center">
+                    <span class="post-time">2017-08-19</span>
+                </div>
+                <p class="col-md-8 col-sm-10 col-xs-12 col-md-offset-2 col-sm-offset-1">
+                    <hr>
+<p><a href="https://www.zybuluo.com/yuxlan/note/852422" target="_blank" rel="external">链接地址</a></p>
+<hr>
+<p>当方法的返回值是一个对象，这个对象还可以在调用它的方法。这种方法调用序列中（“链”或者“级联”）每次的调用结果都是另外一个表达式的组成部分：</p>
+<pre><code>$(&quot;:header&quot;).map(function(){return this.id}).get().sort(); // 找到所有的header，取得它们id的映射，转换为数组并对它们排序
+</code></pre><p>当方法并不需要返回值时，最好直接返回this。如果在设计的API中一直采用这种方式，使用API就可以进行“链式调用”的编程，只要指定一次要调用的对象即可，余下的方法都可以基于此进行调用：</p>
+<pre><code>shape.setX(100).setY(100).setSize(50).setOutline(&quot;red&quot;).setFill(&quot;blue&quot;).draw();
+</code></pre><hr>
+<pre><code>func = (function(){
+    this.add = function(){
+        console.log(&quot;1&quot;);
+        return this;
+    };
+
+    this.result = function(){
+        console.log(&quot;2&quot;);
+        return this;
+    };
+
+    return this;
+});
+
+new func().add().result();
+</code></pre><hr>
+
+                    <br/><br/>
+                </p>
+
+                <!-- Next blog -->
+                <div class="pager-position">
+                    <ul class="pager">
+                        
+                        <li class="previous">
+                            <a href="/2017/08/19/js正则表达式验证/" data-toggle="tooltip" data-placement="top"
+                               title="js正则表达式验证">&larr; 上一篇</a>
+                        </li>
+                        
+                        
+                        <li class="next">
+                            <a href="/2017/07/19/十大经典排序算法的 JS 版/" data-toggle="tooltip" data-placement="top"
+                               title="十大经典排序算法的 JS 版">下一篇 &rarr;</a>
+                        </li>
+                        
+                    </ul>
+                </div>
+                <!-- END -->
+
+            </div>
+            <!-- Blogs End -->
+
+
+
+        </div>
+    </div>
 </section>
       <!-- FOOTER SECTION -->
 
