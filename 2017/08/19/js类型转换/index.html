@@ -114,55 +114,167 @@
     </nav>
     <!-- Nav Menu End-->
 </header>
-      <!-- 文章归档页 -->
+      <!-- 文章详情页对应的布局文件 -->
 
-<section class="archive">
-    <h5>
-        归档
-    </h5>
-      <ul class="post-archive">
-        
-          <li class="post-item">
-            <span class="post-date">2017-06-07</span>
-            <a class="post-title" href="/2017/06/07/内存空间/">内存空间</a>
-          </li>
-        
-          <li class="post-item">
-            <span class="post-date">2017-06-07</span>
-            <a class="post-title" href="/2017/06/07/执行上下文/">执行上下文</a>
-          </li>
-        
-          <li class="post-item">
-            <span class="post-date">2017-06-07</span>
-            <a class="post-title" href="/2017/06/07/WebSocket/">WebSocket</a>
-          </li>
-        
-          <li class="post-item">
-            <span class="post-date">2017-06-07</span>
-            <a class="post-title" href="/2017/06/07/有关web自适应/">有关web自适应</a>
-          </li>
-        
-          <li class="post-item">
-            <span class="post-date">2017-05-25</span>
-            <a class="post-title" href="/2017/05/25/canvas常用操作整理/">canvas常用操作整理</a>
-          </li>
-        
-          <li class="post-item">
-            <span class="post-date">2017-05-24</span>
-            <a class="post-title" href="/2017/05/24/变量对象/">变量对象</a>
-          </li>
-        
-          <li class="post-item">
-            <span class="post-date">2017-05-24</span>
-            <a class="post-title" href="/2017/05/24/数据交互方式——关于get-post-getJSON-ajax的异同/">数据交互方式——关于get/post/getJSON/ajax的异同</a>
-          </li>
-        
-          <li class="post-item">
-            <span class="post-date">2017-05-24</span>
-            <a class="post-title" href="/2017/05/24/常见转义字符整理/">常见转义字符整理</a>
-          </li>
-        
-      </ul>
+
+<!-- SLIDER SECTION -->
+
+<div>
+    <img src="/images/4.jpg"/>
+</div>
+
+<section id="offer" class="clean-section-wrapper-1 clean-offer-section"
+         style="background: url('/images/top.png') bottom center no-repeat;
+                 background-size: 60px;">
+
+
+    <div class="container">
+        <div class="row">
+
+            <!-- Blogs -->
+            <div class="col-md-12 col-sm-12 col-xs-12 clean-section-header-1 wow fadeInDown">
+                <h1>
+                    <span class="clean-color-contras">
+                        
+                    </span>
+                </h1>
+                <div class="clean-line"></div>
+                <div class="post-meta text-center">
+                    <span class="post-time">2017-08-19</span>
+                </div>
+                <p class="col-md-8 col-sm-10 col-xs-12 col-md-offset-2 col-sm-offset-1">
+                    <hr>
+<p>title: js类型转换</p>
+<hr>
+<table>
+<thead>
+<tr>
+<th>值</th>
+<th>字符串</th>
+<th>数字</th>
+<th>布尔值</th>
+<th>对象</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>undefined</td>
+<td>“undefined”</td>
+<td>NaN</td>
+<td>false</td>
+<td>throws TypeError</td>
+</tr>
+<tr>
+<td>null</td>
+<td>“null”</td>
+<td>0</td>
+<td>false</td>
+<td>TypeError</td>
+</tr>
+<tr>
+<td>true</td>
+<td>“true”</td>
+<td>1</td>
+<td></td>
+<td>new Boolean(true)</td>
+</tr>
+<tr>
+<td>false</td>
+<td>“false”</td>
+<td>0</td>
+<td></td>
+<td>new Boolean(false)</td>
+</tr>
+<tr>
+<td>“”(空字符串)</td>
+<td></td>
+<td>0</td>
+<td>false</td>
+<td>new String(“”)</td>
+</tr>
+<tr>
+<td>“1.2”(非空，数字）</td>
+<td></td>
+<td>1.2</td>
+<td>true</td>
+<td>new String(“1.2”)</td>
+</tr>
+<tr>
+<td>“one”(非空，非数字)</td>
+<td></td>
+<td>NaN</td>
+<td>true</td>
+<td>new String(“one”)</td>
+</tr>
+<tr>
+<td>0</td>
+<td>“0”</td>
+<td></td>
+<td>false</td>
+<td>new Number(0)</td>
+</tr>
+<tr>
+<td>-0</td>
+<td>“0”</td>
+<td></td>
+<td>false</td>
+<td>new Number(-0)</td>
+</tr>
+<tr>
+<td>NaN</td>
+<td>“NaN”</td>
+<td></td>
+<td>false</td>
+<td>new Number(NaN)</td>
+</tr>
+<tr>
+<td>Infinity</td>
+<td>“Infinity”</td>
+<td></td>
+<td>true</td>
+<td>new Number(Infinity)</td>
+</tr>
+<tr>
+<td>-Infinity</td>
+<td>“-Infinity”</td>
+<td></td>
+<td>true</td>
+<td>new Number(-Infinity)</td>
+</tr>
+<tr>
+<td>1</td>
+<td>“1”</td>
+<td></td>
+<td>true</td>
+<td>new Number(1)</td>
+</tr>
+</tbody>
+</table>
+
+                    <br/><br/>
+                </p>
+
+                <!-- Next blog -->
+                <div class="pager-position">
+                    <ul class="pager">
+                        
+                        
+                        <li class="next">
+                            <a href="/2017/07/19/十大经典排序算法的 JS 版/" data-toggle="tooltip" data-placement="top"
+                               title="十大经典排序算法的 JS 版">下一篇 &rarr;</a>
+                        </li>
+                        
+                    </ul>
+                </div>
+                <!-- END -->
+
+            </div>
+            <!-- Blogs End -->
+
+
+
+        </div>
+    </div>
 </section>
       <!-- FOOTER SECTION -->
 
