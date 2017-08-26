@@ -114,55 +114,120 @@
     </nav>
     <!-- Nav Menu End-->
 </header>
-      <!-- 文章归档页 -->
+      <!-- 文章详情页对应的布局文件 -->
 
-<section class="archive">
-    <h5>
-        归档
-    </h5>
-      <ul class="post-archive">
-        
-          <li class="post-item">
-            <span class="post-date">2017-06-10</span>
-            <a class="post-title" href="/2017/06/10/关于页面布局(flex、盒模型、浮动)/">关于页面布局(flex、盒模型、浮动)</a>
-          </li>
-        
-          <li class="post-item">
-            <span class="post-date">2017-06-10</span>
-            <a class="post-title" href="/2017/06/10/webpack/">webpack</a>
-          </li>
-        
-          <li class="post-item">
-            <span class="post-date">2017-06-07</span>
-            <a class="post-title" href="/2017/06/07/对象、构造函数、原型和原型链/">对象、构造函数、原型和原型链</a>
-          </li>
-        
-          <li class="post-item">
-            <span class="post-date">2017-06-07</span>
-            <a class="post-title" href="/2017/06/07/作用链域和闭包/">作用链域和闭包</a>
-          </li>
-        
-          <li class="post-item">
-            <span class="post-date">2017-06-07</span>
-            <a class="post-title" href="/2017/06/07/内存空间/">内存空间</a>
-          </li>
-        
-          <li class="post-item">
-            <span class="post-date">2017-06-07</span>
-            <a class="post-title" href="/2017/06/07/执行上下文/">执行上下文</a>
-          </li>
-        
-          <li class="post-item">
-            <span class="post-date">2017-06-07</span>
-            <a class="post-title" href="/2017/06/07/WebSocket/">WebSocket</a>
-          </li>
-        
-          <li class="post-item">
-            <span class="post-date">2017-06-07</span>
-            <a class="post-title" href="/2017/06/07/有关web自适应/">有关web自适应</a>
-          </li>
-        
-      </ul>
+
+<!-- SLIDER SECTION -->
+
+<div>
+    <img src="/images/4.jpg"/>
+</div>
+
+<section id="offer" class="clean-section-wrapper-1 clean-offer-section"
+         style="background: url('/images/top.png') bottom center no-repeat;
+                 background-size: 60px;">
+
+
+    <div class="container">
+        <div class="row">
+
+            <!-- Blogs -->
+            <div class="col-md-12 col-sm-12 col-xs-12 clean-section-header-1 wow fadeInDown">
+                <h1>
+                    <span class="clean-color-contras">
+                        关于类和模块的一些
+                    </span>
+                </h1>
+                <div class="clean-line"></div>
+                <div class="post-meta text-center">
+                    <span class="post-time">2017-08-26</span>
+                </div>
+                <p class="col-md-8 col-sm-10 col-xs-12 col-md-offset-2 col-sm-offset-1">
+                    <hr>
+<blockquote>
+<p>原型对象是类的唯一标识：当且仅当两个对象继承自同一个原型对象时，它们才是属于同一个类的实例。</p>
+</blockquote>
+<hr>
+<ul>
+<li>构造函数对象<ul>
+<li>为js的类定义了名字，任何添加到这构造函数对象中的属性都是类字段和类方法</li>
+</ul>
+</li>
+<li>原型对象<ul>
+<li>原型对象的属性被类的所有实例所继承，如果原型对象的属性值是函数的话，这个函数就作为类的实例的方法来调用</li>
+</ul>
+</li>
+<li>实例对象<ul>
+<li>类的每个实例都是一个独立的对象，直接给这个实例定义的属性是不会为所有实例对象所共享的。定义在实例上的非函数属性，实际上是实例的字段</li>
+</ul>
+</li>
+</ul>
+<hr>
+<ul>
+<li>定义类的步骤<ol>
+<li>先定义一个构造函数，并设置初始化新对象的实力属性</li>
+<li>给构造函数的prototype对象定义实例的方法</li>
+<li>给构造函数定义类字段和类属性</li>
+</ol>
+</li>
+</ul>
+<hr>
+<pre><code>// 一个用以定义简单类的函数
+// constructor用以设置实例的属性的函数  methods实例的方法，复制至原型中  statics类属性，复制至构造函数中
+function defineClass(constructor,methods,statics) {
+    if (methods)
+        extend(constructor.prototype,methods);
+    if(statics)
+        extend(constructor,statics);
+    }
+
+    // 类
+    var SimpleRange = defineClass(function(f,t){this.f = f;this.t = t;},
+                                    {
+                                    includes:function(x){return this.f&lt;=x &amp;&amp; x&lt;=this.t;},
+                                    toString:function(){return this.f + &quot;...&quot; + this.t;}
+                                    },
+                                    {upto:function(t){return new SimpleRange(0.t);} });
+</code></pre><hr>
+<ol>
+<li>instanceof<ol>
+<li>如果o继承自c.prototype，则表达式 o instanceof c值为true</li>
+<li>如果o继承的对象继承自另一个对象，另一个对象继承自c.prototype，则表达式 o instanceof c 值也为true</li>
+</ol>
+</li>
+<li>isPrototypeOf() 检测对象的原型链上是否存在某个特定的原型对象</li>
+<li>constructor  识别对象是否属于某个类的方法</li>
+</ol>
+
+                    <br/><br/>
+                </p>
+
+                <!-- Next blog -->
+                <div class="pager-position">
+                    <ul class="pager">
+                        
+                        <li class="previous">
+                            <a href="/2017/08/26/prototype/" data-toggle="tooltip" data-placement="top"
+                               title="prototype">&larr; 上一篇</a>
+                        </li>
+                        
+                        
+                        <li class="next">
+                            <a href="/2017/08/19/js类型转换/" data-toggle="tooltip" data-placement="top"
+                               title="js类型转换">下一篇 &rarr;</a>
+                        </li>
+                        
+                    </ul>
+                </div>
+                <!-- END -->
+
+            </div>
+            <!-- Blogs End -->
+
+
+
+        </div>
+    </div>
 </section>
       <!-- FOOTER SECTION -->
 

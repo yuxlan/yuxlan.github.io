@@ -114,55 +114,89 @@
     </nav>
     <!-- Nav Menu End-->
 </header>
-      <!-- 文章归档页 -->
+      <!-- 文章详情页对应的布局文件 -->
 
-<section class="archive">
-    <h5>
-        归档
-    </h5>
-      <ul class="post-archive">
-        
-          <li class="post-item">
-            <span class="post-date">2017-06-10</span>
-            <a class="post-title" href="/2017/06/10/关于页面布局(flex、盒模型、浮动)/">关于页面布局(flex、盒模型、浮动)</a>
-          </li>
-        
-          <li class="post-item">
-            <span class="post-date">2017-06-10</span>
-            <a class="post-title" href="/2017/06/10/webpack/">webpack</a>
-          </li>
-        
-          <li class="post-item">
-            <span class="post-date">2017-06-07</span>
-            <a class="post-title" href="/2017/06/07/对象、构造函数、原型和原型链/">对象、构造函数、原型和原型链</a>
-          </li>
-        
-          <li class="post-item">
-            <span class="post-date">2017-06-07</span>
-            <a class="post-title" href="/2017/06/07/作用链域和闭包/">作用链域和闭包</a>
-          </li>
-        
-          <li class="post-item">
-            <span class="post-date">2017-06-07</span>
-            <a class="post-title" href="/2017/06/07/内存空间/">内存空间</a>
-          </li>
-        
-          <li class="post-item">
-            <span class="post-date">2017-06-07</span>
-            <a class="post-title" href="/2017/06/07/执行上下文/">执行上下文</a>
-          </li>
-        
-          <li class="post-item">
-            <span class="post-date">2017-06-07</span>
-            <a class="post-title" href="/2017/06/07/WebSocket/">WebSocket</a>
-          </li>
-        
-          <li class="post-item">
-            <span class="post-date">2017-06-07</span>
-            <a class="post-title" href="/2017/06/07/有关web自适应/">有关web自适应</a>
-          </li>
-        
-      </ul>
+
+<!-- SLIDER SECTION -->
+
+<div>
+    <img src="/images/4.jpg"/>
+</div>
+
+<section id="offer" class="clean-section-wrapper-1 clean-offer-section"
+         style="background: url('/images/top.png') bottom center no-repeat;
+                 background-size: 60px;">
+
+
+    <div class="container">
+        <div class="row">
+
+            <!-- Blogs -->
+            <div class="col-md-12 col-sm-12 col-xs-12 clean-section-header-1 wow fadeInDown">
+                <h1>
+                    <span class="clean-color-contras">
+                        prototype
+                    </span>
+                </h1>
+                <div class="clean-line"></div>
+                <div class="post-meta text-center">
+                    <span class="post-time">2017-08-26</span>
+                </div>
+                <p class="col-md-8 col-sm-10 col-xs-12 col-md-offset-2 col-sm-offset-1">
+                    <hr>
+<blockquote>
+<p>是一个给类的对象添加方法的方法</p>
+</blockquote>
+<hr>
+<pre><code>// 基本用法
+Number.add(num) // 数字相加
+
+Number.prototype.add = function(num) {
+    return (this + num);
+}   // 使用prototype给Number类型添加了一个add方法，后面可以直接调用
+
+(3).add(15)   // =&gt;18
+</code></pre><hr>
+<pre><code>// 已有方法的实现和增强
+// array.push
+// 原有实现方法
+Array.prototype.push = function(new_element){
+     this[this.length]=new_element;
+     return this.length;
+}
+// 对已有方法进行增强，可以一次性增加多个元素
+Array.prototype.pushPro = function() {
+     var currentLength = this.length;
+     for (var i = 0; i &lt; arguments.length; i++) {
+         this[currentLength + i] = arguments[i];
+     }
+     return this.length;
+ }
+</code></pre>
+                    <br/><br/>
+                </p>
+
+                <!-- Next blog -->
+                <div class="pager-position">
+                    <ul class="pager">
+                        
+                        
+                        <li class="next">
+                            <a href="/2017/08/26/关于类和模块的一些/" data-toggle="tooltip" data-placement="top"
+                               title="关于类和模块的一些">下一篇 &rarr;</a>
+                        </li>
+                        
+                    </ul>
+                </div>
+                <!-- END -->
+
+            </div>
+            <!-- Blogs End -->
+
+
+
+        </div>
+    </div>
 </section>
       <!-- FOOTER SECTION -->
 
