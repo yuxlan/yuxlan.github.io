@@ -1,0 +1,406 @@
+<!-- 共用的布局文件 -->
+
+<!DOCTYPE html>
+<html>
+  <!-- THE HEAD OF HTML FILES -->
+
+<head>
+  <meta http-equiv="content-type" content="text/html; charset=utf-8">
+  <meta http-equiv="X-UA-COMPATIBLE" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0">
+  <meta name="description" content="about personal">
+  <meta name="keyword" content="hexo ejs blog personalPage">
+
+  <link rel="shortcut icon" href="/images/favicon.png">
+
+  <title>YuXLan</title>
+
+  <!-- NORMALIZE CSS -->
+  <link rel="stylesheet" href="/css/normalize.css">
+
+  <!-- BOOTSTRAP CSS -->
+  <link rel="stylesheet" href="/css/bootstrap.min.css">
+
+  <!-- FONTAWESOME -->
+  <link rel="stylesheet" href="/css/font-awesome/css/font-awesome.css">
+
+  <!-- PLUGIN -->
+  <link rel="stylesheet" href="/css/magnific-popup.css">
+  <link rel="stylesheet" href="/css/slider-pro.css">
+  <link rel="stylesheet" href="/css/owl.carousel.css">
+  <link rel="stylesheet" href="/css/owl.theme.css">
+  <link rel="stylesheet" href="/css/owl.transitions.css">
+  <link rel="stylesheet" href="/css/animate.css">
+
+  <!-- MAINSTYLE -->
+  <link rel="stylesheet" href="/css/main.css">
+  <link rel="stylesheet" href="/css/style.css">
+
+  <!-- BASIC JS -->
+    <script src="/js/jquery.min.js"></script>
+    <script src="/js/bootstrap.min.js"></script>
+    <script src="/js/modernizr.min.js"></script>
+    <script src="/js/jquery.easing.js"></script>
+    <script src="/js/jquery.scrollUp.min.js"></script>
+    <script src="/js/smooth-scroll.min.js"></script>
+    <script src="/js/jquery.magnific-popup.min.js"></script>
+    <script src="/js/jquery.sliderPro.min.js"></script>
+    <script src="/js/owl.carousel.min.js"></script>
+    <script src="/js/jquery.easypiechart.js"></script>
+    <script src="/js/jquery.countTo.js"></script>
+    <script src="/js/isotope.pkgd.min.js"></script>
+    <script src="/js/jquery.stellar.min.js"></script>
+    <script src="/js/jquery.waypoints.min.js"></script>
+    <script src="/js/wow.min.js"></script>
+    <script src="/js/jquery.nav.js"></script>
+    <script src="/js/custom.js"></script>
+
+  <link rel="stylesheet"
+        href="//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.4.0/styles/zenburn.min.css">
+
+</head>
+  <body>
+      <!-- THE HEADER + NAV -->
+
+
+<header>
+    <!-- Nav Menu start-->
+    <nav class="navbar clean-main-menu" role="navigation">
+        <div class="container">
+
+            <!-- Nav Toggle -->
+            <div class="navbar-header">
+                <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                </button>
+
+                <!-- Logo -->
+                <a class="navbar-brand logo" href="index.html" id="logo">
+                    YuXLan
+                </a>
+
+            </div>
+            <!-- Nav Toggle End -->
+
+            <!-- Nav-collapse start-->
+            <div id="nav-menu" class="navbar-collapse collapse" role="navigation">
+                <ul class="nav navbar-nav clean-menu-wrapper">
+                    
+                    <li>
+                        <a href="/" class="menu-item-link">
+                            首页
+                        </a>
+                    </li>
+                    
+                    <li>
+                        <a href="/about.html" class="menu-item-link">
+                            关于
+                        </a>
+                    </li>
+                    
+                    <li>
+                        <a href="https://github.com/yuxlan" class="menu-item-link">
+                            作品集
+                        </a>
+                    </li>
+                    
+                </ul>
+            </div>
+            <!-- Nav-collapse End-->
+
+        </div>
+    </nav>
+    <!-- Nav Menu End-->
+</header>
+      <!-- 文章详情页对应的布局文件 -->
+
+
+<!-- SLIDER SECTION -->
+
+<div>
+    <img src="/images/4.jpg"/>
+</div>
+
+<section id="offer" class="clean-section-wrapper-1 clean-offer-section"
+         style="background: url('/images/top.png') bottom center no-repeat;
+                 background-size: 60px;">
+
+
+    <div class="container">
+        <div class="row">
+
+            <!-- Blogs -->
+            <div class="col-md-12 col-sm-12 col-xs-12 clean-section-header-1 wow fadeInDown">
+                <h1>
+                    <span class="clean-color-contras">
+                        webpack &amp;&amp; gulp
+                    </span>
+                </h1>
+                <div class="clean-line"></div>
+                <div class="post-meta text-center">
+                    <span class="post-time">2017-09-02</span>
+                </div>
+                <p class="col-md-8 col-sm-10 col-xs-12 col-md-offset-2 col-sm-offset-1">
+                    <hr>
+<ul>
+<li>Gulp的工作方式是：在一个配置文件中，指明对某些文件进行类似编译，组合，压缩等任务的具体步骤，工具之后可以自动替你完成这些任务。</li>
+</ul>
+<hr>
+<p><img src="https://segmentfault.com/img/remote/1460000007045084" alt="此处输入图片的描述"></p>
+<hr>
+<pre><code>// gulpfile.js
+
+var gulp = require(&apos;gulp&apos;);
+var gutil = require(&apos;gulp-util&apos;);
+var gulpif = require(&apos;gulp-if&apos;);
+var streamify = require(&apos;gulp-streamify&apos;);
+var autoprefixer = require(&apos;gulp-autoprefixer&apos;);
+var cssmin = require(&apos;gulp-cssmin&apos;);
+var less = require(&apos;gulp-less&apos;);
+var concat = require(&apos;gulp-concat&apos;);
+var plumber = require(&apos;gulp-plumber&apos;);
+var source = require(&apos;vinyl-source-stream&apos;);
+var babelify = require(&apos;babelify&apos;);
+var browserify = require(&apos;browserify&apos;);
+var watchify = require(&apos;watchify&apos;);
+var uglify = require(&apos;gulp-uglify&apos;);
+
+var production = process.env.NODE_ENV === &apos;production&apos;;
+
+var dependencies = [
+  &apos;alt&apos;,
+  &apos;react&apos;,
+  &apos;react-router&apos;,
+  &apos;underscore&apos;
+];
+
+/*
+ |--------------------------------------------------------------------------
+ | Combine all JS libraries into a single file for fewer HTTP requests.
+ |--------------------------------------------------------------------------
+ */
+gulp.task(&apos;vendor&apos;, function() {
+  return gulp.src([
+    &apos;bower_components/jquery/dist/jquery.js&apos;,
+    &apos;bower_components/bootstrap/dist/js/bootstrap.js&apos;,
+    &apos;bower_components/magnific-popup/dist/jquery.magnific-popup.js&apos;,
+    &apos;bower_components/toastr/toastr.js&apos;
+  ]).pipe(concat(&apos;vendor.js&apos;))
+    .pipe(gulpif(production, uglify({ mangle: false })))
+    .pipe(gulp.dest(&apos;public/js&apos;));
+});
+
+/*
+ |--------------------------------------------------------------------------
+ | Compile third-party dependencies separately for faster performance.
+ |--------------------------------------------------------------------------
+ */
+gulp.task(&apos;browserify-vendor&apos;, function() {
+  return browserify()
+    .require(dependencies)
+    .bundle()
+    .pipe(source(&apos;vendor.bundle.js&apos;))
+    .pipe(gulpif(production, streamify(uglify({ mangle: false }))))
+    .pipe(gulp.dest(&apos;public/js&apos;));
+});
+
+/*
+ |--------------------------------------------------------------------------
+ | Compile only project files, excluding all third-party dependencies.
+ |--------------------------------------------------------------------------
+ */
+gulp.task(&apos;browserify&apos;, [&apos;browserify-vendor&apos;], function() {
+  return browserify(&apos;app/main.js&apos;)
+    .external(dependencies)
+    .transform(babelify)
+    .bundle()
+    .pipe(source(&apos;bundle.js&apos;))
+    .pipe(gulpif(production, streamify(uglify({ mangle: false }))))
+    .pipe(gulp.dest(&apos;public/js&apos;));
+});
+
+/*
+ |--------------------------------------------------------------------------
+ | Same as browserify task, but will also watch for changes and re-compile.
+ |--------------------------------------------------------------------------
+ */
+gulp.task(&apos;browserify-watch&apos;, [&apos;browserify-vendor&apos;], function() {
+  var bundler = watchify(browserify(&apos;app/main.js&apos;, watchify.args));
+  bundler.external(dependencies);
+  bundler.transform(babelify);
+  bundler.on(&apos;update&apos;, rebundle);
+  return rebundle();
+
+  function rebundle() {
+    var start = Date.now();
+    return bundler.bundle()
+      .on(&apos;error&apos;, function(err) {
+        gutil.log(gutil.colors.red(err.toString()));
+      })
+      .on(&apos;end&apos;, function() {
+        gutil.log(gutil.colors.green(&apos;Finished rebundling in&apos;, (Date.now() - start) + &apos;ms.&apos;));
+      })
+      .pipe(source(&apos;bundle.js&apos;))
+      .pipe(gulp.dest(&apos;public/js/&apos;));
+  }
+});
+
+/*
+ |--------------------------------------------------------------------------
+ | Compile LESS stylesheets.
+ |--------------------------------------------------------------------------
+ */
+gulp.task(&apos;styles&apos;, function() {
+  return gulp.src(&apos;app/stylesheets/main.less&apos;)
+    .pipe(plumber())
+    .pipe(less())
+    .pipe(autoprefixer())
+    .pipe(gulpif(production, cssmin()))
+    .pipe(gulp.dest(&apos;public/css&apos;));
+});
+
+gulp.task(&apos;watch&apos;, function() {
+  gulp.watch(&apos;app/stylesheets/**/*.less&apos;, [&apos;styles&apos;]);
+});
+
+gulp.task(&apos;default&apos;, [&apos;styles&apos;, &apos;vendor&apos;, &apos;browserify-watch&apos;, &apos;watch&apos;]);
+gulp.task(&apos;build&apos;, [&apos;styles&apos;, &apos;vendor&apos;, &apos;browserify&apos;]);
+</code></pre><hr>
+<ul>
+<li>Webpack的工作方式是：把你的项目当做一个整体，通过一个给定的主文件（如：index.js），Webpack将从这个文件开始找到你的项目的所有依赖文件，使用loaders处理它们，最后打包为一个（或多个）浏览器可识别的JavaScript文件。</li>
+</ul>
+<hr>
+<p><img src="https://segmentfault.com/img/remote/1460000007045085" alt="此处输入图片的描述"></p>
+<hr>
+<pre><code>// 一个常见的`webpack`配置文件
+// webpack.config.js
+
+&apos;use strict&apos;;
+
+let webpack = require(&apos;webpack&apos;);
+let path = require(&apos;path&apos;);
+
+module.exports = {
+
+    output: {
+        publicPath: &quot;/public/&quot;,
+        path: path.join(__dirname,&apos;public/&apos;),
+        filename: &apos;bundle.js&apos;
+    },
+
+    entry: [&quot;webpack-dev-server/client?http://localhost:3000&quot;,
+        &quot;webpack/hot/only-dev-server&quot;,&apos;./src/index.js&apos;],
+
+    module: {
+        loaders: [
+            {
+                test: /\.js$/,
+                exclude: /node_modules/,
+                loaders: [&apos;react-hot&apos;,&apos;babel?presets[]=react,presets[]=es2015,presets[]=stage-0,presets[]=react-hmre,plugins[]=transform-decorators-legacy,plugins[]=syntax-async-functions&apos;],
+            },
+            {
+                test: /.scss$/,
+                exclude: /node_modules/,
+                loader: &apos;style!css!sass&apos;
+            },
+            { test: /\.json$/, loader: &quot;json-loader&quot; },
+            {
+                test: /\.(jpe?g|png|gif)$/i,
+                loaders: [
+                    &apos;url?limit=10000&apos;
+                ]
+            },
+            {
+                test: /.css$/,
+
+                loader: &apos;style!css&apos;
+            },
+            {
+                test:/.less$/,
+                loader:&apos;style!css!less&apos;
+            },
+            {
+                test: /\.(woff|woff2|ttf|eot|svg)(\?v=[0-9]\.[0-9]\.[0-9])?$/,
+                loader: &apos;url?limit=10000&amp;name=fonts/[hash:8].[name].[ext]&apos;
+            }
+
+        ]
+    },
+    plugins: [
+        new webpack.HotModuleReplacementPlugin(),
+        new webpack.DefinePlugin({
+            &apos;process.env&apos;:{
+                &apos;NODE_ENV&apos;: JSON.stringify(&apos;development&apos;)
+            }
+        })
+    ]
+};
+</code></pre><hr>
+
+                    <br/><br/>
+                </p>
+
+                <!-- Next blog -->
+                <div class="pager-position">
+                    <ul class="pager">
+                        
+                        
+                        <li class="next">
+                            <a href="/2017/08/26/prototype/" data-toggle="tooltip" data-placement="top"
+                               title="prototype">下一篇 &rarr;</a>
+                        </li>
+                        
+                    </ul>
+                </div>
+                <!-- END -->
+
+            </div>
+            <!-- Blogs End -->
+
+
+
+        </div>
+    </div>
+</section>
+      <!-- FOOTER SECTION -->
+
+<footer class="background-one"
+        style="background: url('/images/bottom.png') top center no-repeat;
+        background-size: 60px;">
+    <div class="container">
+        <div class="row">
+            <div class="clean-footer-content">
+
+                <div class="clean-footer-logo wow bounceIn" data-wow-offset="0">
+                    <a href="index.html" id="logo-footer">
+                        YuXLan
+                    </a>
+                </div>
+
+                <p class="clean-copyright-info">
+                    Copyright &copy; <a href="http://www.miitbeian.gov.cn/" target="_blank">浙ICP备17018917号</a> - writted by YuXLan
+                </p>
+
+                <ul class="clean-footer-social-info">
+                    <li>
+                        <a href="https://github.com/yuxlan" target="_blank"><i class="fa fa-github"></i></a>
+                    </li>
+                    <li>
+                        <a href="https://codepen.io/YuXLan/" target="_blank"><i class="fa fa-codepen"></i></a>
+                    </li>
+                    <li>
+                        <a href="http://www.linkedin.com/in/%E5%B0%8F%E5%85%B0-%E4%BD%99-3467b513b/" target="_blank"><i class="fa fa-linkedin"></i></a>
+                    </li>
+                    <li>
+                        <a href="http://weibo.com/5287171180/profile?topnav=1&wvr=6&is_all=1" target="_blank"><i class="fa fa-weibo"></i></a>
+                    </li>
+                </ul>
+
+            </div>
+        </div>
+    </div>
+</footer>
+  </body>
+</html>
