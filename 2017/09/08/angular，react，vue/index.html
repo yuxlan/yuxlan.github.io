@@ -1,0 +1,306 @@
+<!-- 共用的布局文件 -->
+
+<!DOCTYPE html>
+<html>
+  <!-- THE HEAD OF HTML FILES -->
+
+<head>
+  <meta http-equiv="content-type" content="text/html; charset=utf-8">
+  <meta http-equiv="X-UA-COMPATIBLE" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0">
+  <meta name="description" content="about personal">
+  <meta name="keyword" content="hexo ejs blog personalPage">
+
+  <link rel="shortcut icon" href="/images/favicon.png">
+
+  <title>YuXLan</title>
+
+  <!-- NORMALIZE CSS -->
+  <link rel="stylesheet" href="/css/normalize.css">
+
+  <!-- BOOTSTRAP CSS -->
+  <link rel="stylesheet" href="/css/bootstrap.min.css">
+
+  <!-- FONTAWESOME -->
+  <link rel="stylesheet" href="/css/font-awesome/css/font-awesome.css">
+
+  <!-- PLUGIN -->
+  <link rel="stylesheet" href="/css/magnific-popup.css">
+  <link rel="stylesheet" href="/css/slider-pro.css">
+  <link rel="stylesheet" href="/css/owl.carousel.css">
+  <link rel="stylesheet" href="/css/owl.theme.css">
+  <link rel="stylesheet" href="/css/owl.transitions.css">
+  <link rel="stylesheet" href="/css/animate.css">
+
+  <!-- MAINSTYLE -->
+  <link rel="stylesheet" href="/css/main.css">
+  <link rel="stylesheet" href="/css/style.css">
+
+  <!-- BASIC JS -->
+    <script src="/js/jquery.min.js"></script>
+    <script src="/js/bootstrap.min.js"></script>
+    <script src="/js/modernizr.min.js"></script>
+    <script src="/js/jquery.easing.js"></script>
+    <script src="/js/jquery.scrollUp.min.js"></script>
+    <script src="/js/smooth-scroll.min.js"></script>
+    <script src="/js/jquery.magnific-popup.min.js"></script>
+    <script src="/js/jquery.sliderPro.min.js"></script>
+    <script src="/js/owl.carousel.min.js"></script>
+    <script src="/js/jquery.easypiechart.js"></script>
+    <script src="/js/jquery.countTo.js"></script>
+    <script src="/js/isotope.pkgd.min.js"></script>
+    <script src="/js/jquery.stellar.min.js"></script>
+    <script src="/js/jquery.waypoints.min.js"></script>
+    <script src="/js/wow.min.js"></script>
+    <script src="/js/jquery.nav.js"></script>
+    <script src="/js/custom.js"></script>
+
+  <link rel="stylesheet"
+        href="//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.4.0/styles/zenburn.min.css">
+
+</head>
+  <body>
+      <!-- THE HEADER + NAV -->
+
+
+<header>
+    <!-- Nav Menu start-->
+    <nav class="navbar clean-main-menu" role="navigation">
+        <div class="container">
+
+            <!-- Nav Toggle -->
+            <div class="navbar-header">
+                <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                </button>
+
+                <!-- Logo -->
+                <a class="navbar-brand logo" href="index.html" id="logo">
+                    YuXLan
+                </a>
+
+            </div>
+            <!-- Nav Toggle End -->
+
+            <!-- Nav-collapse start-->
+            <div id="nav-menu" class="navbar-collapse collapse" role="navigation">
+                <ul class="nav navbar-nav clean-menu-wrapper">
+                    
+                    <li>
+                        <a href="/" class="menu-item-link">
+                            首页
+                        </a>
+                    </li>
+                    
+                    <li>
+                        <a href="/about.html" class="menu-item-link">
+                            关于
+                        </a>
+                    </li>
+                    
+                    <li>
+                        <a href="https://github.com/yuxlan" class="menu-item-link">
+                            作品集
+                        </a>
+                    </li>
+                    
+                </ul>
+            </div>
+            <!-- Nav-collapse End-->
+
+        </div>
+    </nav>
+    <!-- Nav Menu End-->
+</header>
+      <!-- 文章详情页对应的布局文件 -->
+
+
+<!-- SLIDER SECTION -->
+
+<div>
+    <img src="/images/4.jpg"/>
+</div>
+
+<section id="offer" class="clean-section-wrapper-1 clean-offer-section"
+         style="background: url('/images/top.png') bottom center no-repeat;
+                 background-size: 60px;">
+
+
+    <div class="container">
+        <div class="row">
+
+            <!-- Blogs -->
+            <div class="col-md-12 col-sm-12 col-xs-12 clean-section-header-1 wow fadeInDown">
+                <h1>
+                    <span class="clean-color-contras">
+                        angular，react，vue
+                    </span>
+                </h1>
+                <div class="clean-line"></div>
+                <div class="post-meta text-center">
+                    <span class="post-time">2017-09-08</span>
+                </div>
+                <p class="col-md-8 col-sm-10 col-xs-12 col-md-offset-2 col-sm-offset-1">
+                    <hr>
+<p><a href="https://hulufei.gitbooks.io/react-tutorial/content/" target="_blank" rel="external">react教程</a><br><a href="https://cn.vuejs.org/v2/guide/" target="_blank" rel="external">vue教程</a><br><a href="http://www.yiibai.com/angularjs/angularjs_quick_guide.html" target="_blank" rel="external">angular教程</a></p>
+<hr>
+<p><strong>数据流</strong></p>
+<hr>
+<p>1.angular 使用数据双向绑定：界面的操作能实时反映到数据，数据的变更能实时展现到界面<br>2.vue 也支持数据双向绑定，<strong>默认为单向绑定，数据从父组件单向传给子组件</strong><br>3.react 函数式编程和单向数据流<br><strong>4.在大型应用中使用单向绑定让数据流易于理解【vue,react】</strong></p>
+<hr>
+<p><strong>数据渲染</strong></p>
+<hr>
+<p>1.angular：html模板将会被浏览器解析到DOM中，DOM结构成为angular编译器的输入；angular将会遍历DOM模板，生成相应的NG指令，所有的指令都负责针对view（ng-modal）来设置数据绑定；NG指令是在DOM加载完成之后才开始起作用<br>2.react：渲染建立在虚拟DOM上，当状态发生变化时，react重新渲染虚拟DOM，比较计算之后再传给真实DOM；虚拟DOM提供了函数式的方法描述视图，每次更新都会重新渲染整个应用，从定义上保证了视图与数据的同步<br><strong>3.在超大量数据的首屏渲染速度上，react有一定优势，支持服务端渲染和原生渲染，angular也支持服务端渲染和原生渲染</strong></p>
+<hr>
+<p><strong>模块化与组件化</strong></p>
+<hr>
+<p>1.angular使用依赖注入解决模块之间的依赖问题，使用ES6的module来定义模块，也考虑了动态加载的需求【我们使用的angular2】<br>2.vue中指令和组件分得更清晰，指令只封装DOM操作，组件代表一个自给自足的独立单元（有自己的视图和数据逻辑）<br>3.react应用是构建在react组件上的（组件化编程）</p>
+<hr>
+<p><strong>语法和代码风格</strong></p>
+<hr>
+<p>1.react，vue，angular都支持ES6<br>2.react以JavaScript为中心【声明式设计（采用声明范式，可以轻松描述应用），高效（通过对DOM的模拟，最小限度地减少与DOM的交互），灵活（可以和已知的库或框架更好地配合）】<br>3.angular2以html为中心【良好的应用程序结构，双向数据绑定，指令，html模板，可嵌入、注入和测试】<br>4.vue通过简单的API（应用程序编程接口）提供高效的数据绑定和灵活的组件系统【轻量级的框架，支持单向数据也支持双向数据绑定，指令，插件化】</p>
+<hr>
+<p><strong>比较</strong></p>
+<hr>
+<p>1.react适合开发轻量级单一组件，是最灵活的视图渲染框架<br>2.react更小并且只涵盖视图组件的操作，缺少向html的扩展机制是react的不足<br>3.react速度快（在UI渲染过程中，通过在虚拟DOM中的微操来实现对实际DOM的局部更新），跨浏览器兼容，模块化，单向数据流，同构纯粹的JavaScript，兼容性更好<br>3.angular2适合时间处理逻辑多，UI渲染复杂的<br>4.angular2更稳定、可扩展且更加完善<br>5.vue更简单（官方文档清晰，比angular简单易学）；快速（异步批处理方式更新DOM）；组合（用可复用的组件组合应用程序）；紧凑；强大（表达式&amp;无需声明依赖的可推到属性）；对模块友好；不支持IE8及以下</p>
+<hr>
+<p><strong>代码示例</strong></p>
+<hr>
+<p><strong>vue</strong></p>
+<pre><code>&lt;div id=&quot;demo&quot;&gt;
+    &lt;div&gt; &lt;input v-model=&quot;name&quot;&gt;&lt;/div&gt;
+    &lt;div&gt; &lt;input v-model=&quot;status&quot;&gt;&lt;/div&gt;
+    &lt;div&gt; &lt;input  v-on=&quot;click:save()&quot; type=&quot;button&quot; value=&quot;save&quot;&gt;&lt;/div&gt;
+&lt;/div&gt;
+&lt;script&gt;
+    var demo = new Vue({
+        el: &apos;#demo&apos;,
+        data: {
+            name: &apos;&apos;,
+            status:&apos;&apos;
+        },
+        methods: {
+            save: function () {
+                saveToDB(this.name, this.status);
+            }
+        }
+    })
+    function saveToDB(name, status) {
+        //..
+        //..
+    }
+&lt;/script&gt;
+</code></pre><hr>
+<p><strong>react</strong></p>
+<pre><code>var User = function (name, status) {
+this.name = name;
+this.status = status;
+}
+
+User.prototype={
+    save:function(name,status){
+        //save to db
+    }
+}
+var user = new User();
+
+var RegisterComponent = React.createClass({
+    displayName: &quot;RegisterComponent&quot;,
+    getInitialState: function () {
+        return user;
+    },
+    onFirstInputChange: function () {        
+        this.setState({name: React.findDOMNode(this.refs.fistInput).value});
+    },
+    onSecInputChange:function(){       
+        this.setState({status: React.findDOMNode(this.refs.secInput).value});
+    },
+    save:function(){
+        //只有不更改input的时候这个返回true,setState之后就成false
+        console.log(this.state===user)
+        //所以使用this.state吧
+        user.save(this.state.name,this.state.status);
+    },
+    render: function () {     
+        return (
+         &lt;div&gt;
+            &lt;div&gt;name:   &lt;input type=&quot;text&quot; onChange={this.onFirstInputChange}  ref=&quot;fistInput&quot; value={this.state.name} /&gt;   &lt;/div&gt;
+            &lt;div&gt;status: &lt;input type=&quot;text&quot;  onChange={this.onSecInputChange} ref=&quot;secInput&quot; value={this.state.status}  /&gt; &lt;/div&gt;
+            &lt;button onClick={this.save}&gt;save&lt;/button&gt;
+
+
+        &lt;/div&gt;
+        );
+    }
+});
+
+
+React.render(&lt;RegisterComponent /&gt;, document.getElementById(&quot;RegisterComponentExample&quot;));
+</code></pre>
+                    <br/><br/>
+                </p>
+
+                <!-- Next blog -->
+                <div class="pager-position">
+                    <ul class="pager">
+                        
+                        
+                        <li class="next">
+                            <a href="/2017/09/02/webpack && gulp/" data-toggle="tooltip" data-placement="top"
+                               title="webpack && gulp">下一篇 &rarr;</a>
+                        </li>
+                        
+                    </ul>
+                </div>
+                <!-- END -->
+
+            </div>
+            <!-- Blogs End -->
+
+
+
+        </div>
+    </div>
+</section>
+      <!-- FOOTER SECTION -->
+
+<footer class="background-one"
+        style="background: url('/images/bottom.png') top center no-repeat;
+        background-size: 60px;">
+    <div class="container">
+        <div class="row">
+            <div class="clean-footer-content">
+
+                <div class="clean-footer-logo wow bounceIn" data-wow-offset="0">
+                    <a href="index.html" id="logo-footer">
+                        YuXLan
+                    </a>
+                </div>
+
+                <p class="clean-copyright-info">
+                    Copyright &copy; <a href="http://www.miitbeian.gov.cn/" target="_blank">浙ICP备17018917号</a> - writted by YuXLan
+                </p>
+
+                <ul class="clean-footer-social-info">
+                    <li>
+                        <a href="https://github.com/yuxlan" target="_blank"><i class="fa fa-github"></i></a>
+                    </li>
+                    <li>
+                        <a href="https://codepen.io/YuXLan/" target="_blank"><i class="fa fa-codepen"></i></a>
+                    </li>
+                    <li>
+                        <a href="http://www.linkedin.com/in/%E5%B0%8F%E5%85%B0-%E4%BD%99-3467b513b/" target="_blank"><i class="fa fa-linkedin"></i></a>
+                    </li>
+                    <li>
+                        <a href="http://weibo.com/5287171180/profile?topnav=1&wvr=6&is_all=1" target="_blank"><i class="fa fa-weibo"></i></a>
+                    </li>
+                </ul>
+
+            </div>
+        </div>
+    </div>
+</footer>
+  </body>
+</html>
